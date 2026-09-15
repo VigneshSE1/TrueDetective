@@ -1,14 +1,14 @@
 import { Link } from "@tanstack/react-router";
 import { MessageCircle, Phone, Mail, MapPin } from "lucide-react";
+import { Logo } from "@/components/site/Logo";
 import { site, whatsappLink, legalDisclaimer } from "@/lib/site";
 
 const footerLinks = [
   { label: "Home", to: "/" },
   { label: "About", to: "/about" },
   { label: "Services", to: "/services" },
-  { label: "Corporate Investigations", to: "/corporate" },
-  { label: "Individual Investigations", to: "/individuals" },
-  { label: "Our Approach", to: "/approach" },
+  { label: "Private Investigations", to: "/private-investigations" },
+  { label: "Corporate Intelligence", to: "/corporate-intelligence" },
   { label: "Contact", to: "/contact" },
   { label: "Privacy Policy", to: "/privacy" },
   { label: "Terms & Conditions", to: "/terms" },
@@ -19,7 +19,10 @@ export function Footer() {
     <footer className="bg-navy text-navy-foreground">
       <div className="container-td grid gap-12 py-16 md:grid-cols-3">
         <div>
-          <p className="font-display text-xl font-bold tracking-[0.2em]">{site.name}</p>
+          <div className="flex items-center gap-3">
+            <Logo className="size-9 text-navy-foreground" />
+            <p className="font-display text-xl font-bold tracking-[0.2em]">{site.name}</p>
+          </div>
           <p className="mt-2 text-sm text-navy-foreground/60">{site.descriptor}</p>
           <p className="mt-6 max-w-xs font-display text-lg text-navy-foreground/90">
             {site.tagline}
@@ -53,11 +56,8 @@ export function Footer() {
           <p className="flex items-center gap-2">
             <Mail className="size-4 shrink-0" /> {site.emailDisplay}
           </p>
-          <p className="flex items-center gap-2">
-            <MapPin className="size-4 shrink-0" /> Tamil Nadu
-          </p>
-          <p className="flex items-center gap-2">
-            <MapPin className="size-4 shrink-0" /> Bangalore
+          <p className="flex items-start gap-2">
+            <MapPin className="mt-0.5 size-4 shrink-0" /> {site.addressDisplay}
           </p>
         </div>
       </div>

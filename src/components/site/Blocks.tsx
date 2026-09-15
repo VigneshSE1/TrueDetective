@@ -1,9 +1,20 @@
-import type { ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { whatsappLink } from "@/lib/site";
+import { aboutGallery, whatsappLink } from "@/lib/site";
 import { cn } from "@/lib/utils";
+import surveillanceImage from "@/assets/surveillance.jpg";
+import documentsImage from "@/assets/documents.jpg";
+import corporateImage from "@/assets/corporate.jpg";
+import heroCityImage from "@/assets/hero-city.jpg";
+
+const galleryImages: Record<(typeof aboutGallery)[number]["image"], string> = {
+  surveillance: surveillanceImage,
+  documents: documentsImage,
+  corporate: corporateImage,
+  "hero-city": heroCityImage,
+};
 
 export function SectionHeading({
   eyebrow,
@@ -119,6 +130,53 @@ export function ConfidentialityBanner() {
         </div>
       </div>
     </section>
+  );
+}
+
+export function AboutGallery() {
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setActive((i) => (i + 1) % aboutGallery.length);
+    }, 4000);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <div className="overflow-hidden rounded-lg shadow-elegant">
+      <div className="relative aspect-4/3">
+        {aboutGallery.map((slide, i) => (
+          <img
+            key={slide.image}
+            src={galleryImages[slide.image]}
+            alt={slide.alt}
+            loading={i === 0 ? "eager" : "lazy"}
+            className={cn(
+              "absolute inset-0 h-full w-full object-cover transition-opacity duration-1000",
+              i === active ? "opacity-100" : "opacity-0",
+            )}
+          />
+        ))}
+        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/85 to-transparent p-5 pt-10">
+          <p className="text-sm font-medium text-navy-foreground">{aboutGallery[active].caption}</p>
+          <div className="mt-3 flex gap-1.5">
+            {aboutGallery.map((slide, i) => (
+              <button
+                key={slide.image}
+                type="button"
+                aria-label={`Show slide ${i + 1}: ${slide.caption}`}
+                onClick={() => setActive(i)}
+                className={cn(
+                  "h-1 flex-1 rounded-full transition-colors",
+                  i === active ? "bg-accent" : "bg-navy-foreground/25",
+                )}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 

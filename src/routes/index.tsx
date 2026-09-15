@@ -23,7 +23,8 @@ import {
   ConfidentialityBanner,
   LocationSection,
 } from "@/components/site/Blocks";
-import { services, approachSteps, faqs, whatsappLink } from "@/lib/site";
+import { Logo } from "@/components/site/Logo";
+import { aboutContent, services, approachSteps, faqs, whatsappLink } from "@/lib/site";
 import heroImage from "@/assets/hero-city.jpg";
 import documentsImage from "@/assets/documents.jpg";
 import corporateImage from "@/assets/corporate.jpg";
@@ -134,13 +135,15 @@ function Home() {
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy via-navy/85 to-navy/35" />
         <div className="container-td py-28 lg:py-40">
           <div className="max-w-3xl animate-rise">
-            <p className="eyebrow">Private Investigation &amp; Corporate Intelligence</p>
+            <Logo className="size-14 text-navy-foreground" />
+            <p className="eyebrow mt-6">Private Investigation &amp; Corporate Intelligence</p>
             <h1 className="mt-6 text-4xl leading-[1.06] sm:text-5xl lg:text-[3.9rem]">
               When Facts Matter, We Investigate.
             </h1>
             <p className="mt-7 max-w-2xl text-lg leading-relaxed text-navy-foreground/70">
-              Discreet investigation, surveillance, verification and fact-finding services for
-              individuals, businesses and legal professionals across Tamil Nadu and Bangalore.
+              Confidential and professional investigative services, including surveillance,
+              verification, and fact-finding, for individuals, businesses, and legal professionals
+              across Tamil Nadu.
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
               <Button asChild variant="accent" size="xl">
@@ -160,7 +163,10 @@ function Home() {
       <section className="border-b border-border bg-card">
         <div className="container-td grid gap-px sm:grid-cols-2 lg:grid-cols-4">
           {trust.map((t) => (
-            <div key={t.title} className="border-border px-1 py-10 sm:px-6 lg:border-l lg:first:border-l-0">
+            <div
+              key={t.title}
+              className="border-border px-1 py-10 sm:px-6 lg:border-l lg:first:border-l-0"
+            >
               <t.icon className="size-5 text-accent" />
               <h3 className="mt-5 text-base font-semibold">{t.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t.text}</p>
@@ -173,22 +179,11 @@ function Home() {
       <section className="section-y">
         <div className="container-td grid gap-14 lg:grid-cols-2 lg:items-center">
           <div>
-            <SectionHeading eyebrow="About Us" title="Investigation Built Around Facts" />
+            <SectionHeading eyebrow={aboutContent.eyebrow} title={aboutContent.strapline} />
             <div className="mt-6 space-y-4 text-muted-foreground">
-              <p>
-                TRUE DETECTIVE provides professional private investigation and corporate
-                intelligence services for clients who need clarity in situations where facts are
-                uncertain.
-              </p>
-              <p>
-                From personal matters and matrimonial investigations to corporate fraud concerns,
-                employee verification, due diligence and litigation support, we help clients gather,
-                verify and understand relevant information.
-              </p>
-              <p>
-                Our approach combines discreet enquiries, surveillance, verification, information
-                gathering and analysis while respecting applicable laws and professional boundaries.
-              </p>
+              {aboutContent.paragraphs.map((p) => (
+                <p key={p}>{p}</p>
+              ))}
             </div>
             <blockquote className="rule-accent mt-8 text-foreground">
               <p className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
@@ -291,7 +286,7 @@ function Home() {
             </ul>
             <div className="mt-9">
               <Button asChild variant="navy" size="xl">
-                <Link to="/corporate">Discuss a Corporate Requirement</Link>
+                <Link to="/corporate-intelligence">Discuss a Corporate Requirement</Link>
               </Button>
             </div>
           </div>
@@ -303,7 +298,7 @@ function Home() {
         <div className="container-td section-y grid gap-14 lg:grid-cols-2">
           <div>
             <SectionHeading
-              eyebrow="For Individuals"
+              eyebrow="Private Investigations"
               title="When Personal Matters Require Answers"
             />
             <div className="mt-6 space-y-4 text-muted-foreground">
@@ -318,7 +313,7 @@ function Home() {
             </div>
             <div className="mt-8">
               <Button asChild variant="navy" size="xl">
-                <Link to="/individuals">Speak With Us Confidentially</Link>
+                <Link to="/private-investigations">Speak With Us Confidentially</Link>
               </Button>
             </div>
           </div>

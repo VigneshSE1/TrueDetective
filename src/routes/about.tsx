@@ -6,9 +6,9 @@ import {
   ConfidentialityBanner,
   LocationSection,
   CtaRow,
+  AboutGallery,
 } from "@/components/site/Blocks";
-import { approachSteps } from "@/lib/site";
-import documentsImage from "@/assets/documents.jpg";
+import { aboutContent, approachSteps } from "@/lib/site";
 
 const title = "About TRUE DETECTIVE | Investigation Agency Tamil Nadu & Bangalore";
 const description =
@@ -41,20 +41,16 @@ function About() {
 
       <section className="section-y">
         <div className="container-td grid gap-14 lg:grid-cols-2 lg:items-center">
-          <div className="space-y-4 text-muted-foreground">
-            <p>
-              TRUE DETECTIVE provides professional private investigation and corporate intelligence
-              services for clients who need clarity in situations where facts are uncertain.
-            </p>
-            <p>
-              From personal matters and matrimonial investigations to corporate fraud concerns,
-              employee verification, due diligence and litigation support, we help clients gather,
-              verify and understand relevant information.
-            </p>
-            <p>
-              Our approach combines discreet enquiries, surveillance, verification, information
-              gathering and analysis while respecting applicable laws and professional boundaries.
-            </p>
+          <div>
+            <p className="eyebrow">{aboutContent.eyebrow}</p>
+            <h2 className="mt-4 text-3xl leading-[1.12] sm:text-4xl lg:text-[2.4rem]">
+              {aboutContent.strapline}
+            </h2>
+            <div className="mt-6 space-y-4 text-muted-foreground">
+              {aboutContent.paragraphs.map((p) => (
+                <p key={p}>{p}</p>
+              ))}
+            </div>
             <blockquote className="rule-accent mt-8 text-foreground">
               <p className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
                 Our objective is simple
@@ -69,16 +65,7 @@ function About() {
               </Button>
             </div>
           </div>
-          <div className="overflow-hidden rounded-lg shadow-elegant">
-            <img
-              src={documentsImage}
-              alt="Case documents being reviewed discreetly"
-              width={1600}
-              height={1104}
-              loading="lazy"
-              className="h-full w-full object-cover"
-            />
-          </div>
+          <AboutGallery />
         </div>
       </section>
 
