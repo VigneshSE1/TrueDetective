@@ -1,9 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X, MessageCircle } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Logo } from "@/components/site/Logo";
-import { navLinks, site, whatsappLink } from "@/lib/site";
+import { navLinks, site } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 export function Header() {
@@ -29,21 +28,20 @@ export function Header() {
       <div className="container-td flex h-20 items-center justify-between gap-6">
         <Link
           to="/"
-          className="group flex items-center gap-3 leading-none"
+          className="group flex items-center leading-none"
           onClick={() => setOpen(false)}
         >
-          <Logo className="size-9 text-foreground" />
           <span className="flex flex-col">
             <span className="font-display text-lg font-bold tracking-[0.2em] text-foreground">
               TRUE DETECTIVE
             </span>
-            <span className="mt-1 text-[0.62rem] uppercase tracking-[0.16em] text-muted-foreground">
+            <span className="mt-1 whitespace-nowrap text-[0.62rem] uppercase tracking-[0.16em] text-muted-foreground">
               {site.descriptor}
             </span>
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-7 lg:flex">
+        <nav className="hidden items-center gap-5 xl:flex">
           {navLinks.map((l) => (
             <Link
               key={l.to}
@@ -51,14 +49,14 @@ export function Header() {
               activeOptions={{ exact: l.to === "/" }}
               activeProps={{ className: "text-foreground" }}
               inactiveProps={{ className: "text-muted-foreground" }}
-              className="text-sm font-medium transition-colors hover:text-foreground"
+              className="whitespace-nowrap text-sm font-medium transition-colors hover:text-foreground"
             >
               {l.label}
             </Link>
           ))}
         </nav>
 
-        <div className="hidden lg:block">
+        <div className="hidden xl:block">
           <Button asChild variant="accent">
             <Link to="/contact">Confidential Consultation</Link>
           </Button>
@@ -69,14 +67,14 @@ export function Header() {
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border text-foreground lg:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border text-foreground xl:hidden"
         >
           {open ? <X className="size-5" /> : <Menu className="size-5" />}
         </button>
       </div>
 
       {open && (
-        <div className="border-t border-border bg-background lg:hidden">
+        <div className="border-t border-border bg-background xl:hidden">
           <nav className="container-td flex flex-col py-4">
             {navLinks.map((l) => (
               <Link
@@ -93,11 +91,6 @@ export function Header() {
                 <Link to="/contact" onClick={() => setOpen(false)}>
                   Confidential Consultation
                 </Link>
-              </Button>
-              <Button asChild variant="whatsapp" size="lg">
-                <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-                  <MessageCircle /> Chat on WhatsApp
-                </a>
               </Button>
             </div>
           </nav>
