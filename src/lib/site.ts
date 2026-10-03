@@ -14,7 +14,7 @@ export const whatsappLink = `https://wa.me/${site.whatsappNumber}?text=${encodeU
   "Hello TRUE DETECTIVE, I would like to discuss a confidential requirement.",
 )}`;
 
-// Embeddable map — falls back to a Tamil Nadu-wide view until the exact office address is confirmed.
+// Embeddable map - falls back to a Tamil Nadu-wide view until the exact office address is confirmed.
 export const mapEmbedSrc = `https://maps.google.com/maps?q=${encodeURIComponent(
   site.addressDisplay,
 )}&z=8&output=embed`;
@@ -160,7 +160,7 @@ export const aboutContent = {
 };
 
 // Auto-rotating gallery on the About page. Placeholder imagery until themed
-// photography is supplied — captions describe the assignment type shown.
+// photography is supplied - captions describe the assignment type shown.
 export const aboutGallery = [
   {
     image: "surveillance",
@@ -193,14 +193,14 @@ export const privateInvestigationsContent = {
   },
   intro: [
     "Personal matters are rarely simple. They often involve conflicting information, emotional strain and decisions that carry lasting consequences.",
-    "TRUE DETECTIVE approaches every personal assignment with objectivity, discretion and care — helping clients understand the facts before they act.",
+    "TRUE DETECTIVE approaches every personal assignment with objectivity, discretion and care - helping clients understand the facts before they act.",
   ],
   matrimony: [
     {
       title: "Pre-Matrimony Verification",
       why: "To help families and individuals make an informed decision before marriage, by verifying the background, character and circumstances of a prospective partner.",
       what: "Background and identity verification, family and social standing checks, employment and financial standing checks, and character-related enquiries conducted discreetly.",
-      how: "Through confidential enquiries, verification of available records, and discreet fact-finding — always within applicable laws and professional boundaries.",
+      how: "Through confidential enquiries, verification of available records, and discreet fact-finding - always within applicable laws and professional boundaries.",
     },
     {
       title: "Post-Matrimony Investigation",

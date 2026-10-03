@@ -1,8 +1,7 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
-import { MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { aboutGallery, whatsappLink } from "@/lib/site";
+import { aboutGallery } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import surveillanceImage from "@/assets/surveillance.jpg";
 import documentsImage from "@/assets/documents.jpg";
@@ -90,11 +89,6 @@ export function CtaRow({
     <div className="flex flex-wrap gap-3">
       <Button asChild variant="accent" size="xl">
         <Link to="/contact">{primaryLabel}</Link>
-      </Button>
-      <Button asChild variant={onDark ? "onDark" : "outline"} size="xl">
-        <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-          <MessageCircle /> Chat on WhatsApp
-        </a>
       </Button>
     </div>
   );

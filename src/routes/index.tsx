@@ -23,7 +23,6 @@ import {
   ConfidentialityBanner,
   LocationSection,
 } from "@/components/site/Blocks";
-import { Logo } from "@/components/site/Logo";
 import { aboutContent, services, approachSteps, faqs, whatsappLink } from "@/lib/site";
 import heroImage from "@/assets/hero-city.jpg";
 import documentsImage from "@/assets/documents.jpg";
@@ -135,8 +134,7 @@ function Home() {
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy via-navy/85 to-navy/35" />
         <div className="container-td py-28 lg:py-40">
           <div className="max-w-3xl animate-rise">
-            <Logo className="size-14 text-navy-foreground" />
-            <p className="eyebrow mt-6">Private Investigation &amp; Corporate Intelligence</p>
+            <p className="eyebrow">Private Investigation &amp; Corporate Intelligence</p>
             <h1 className="mt-6 text-4xl leading-[1.06] sm:text-5xl lg:text-[3.9rem]">
               When Facts Matter, We Investigate.
             </h1>

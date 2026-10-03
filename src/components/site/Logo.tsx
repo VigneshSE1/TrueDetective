@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 
 /**
- * TRUE DETECTIVE monogram — a shield with a magnifying glass.
+ * TRUE DETECTIVE monogram - a shield with a magnifying glass.
  * Placeholder mark until an official logo file is supplied.
  */
 export function Logo({ className }: { className?: string }) {

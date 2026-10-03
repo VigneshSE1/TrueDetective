@@ -39,7 +39,7 @@ function CorporateIntelligence() {
 
       <section className="border-y border-border bg-surface">
         <div className="container-td section-y">
-          <SectionHeading eyebrow="Our Approach" title="Why — What We Do — How We Do It" />
+          <SectionHeading eyebrow="Our Approach" title="Why - What We Do - How We Do It" />
           <div className="mt-12 grid gap-8 lg:grid-cols-3">
             <div className="rounded-lg border border-border bg-card p-7">
               <p className="eyebrow">Why</p>

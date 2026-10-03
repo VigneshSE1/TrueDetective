@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
-import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -65,7 +65,7 @@ function Contact() {
             <h2 className="text-2xl leading-snug">Get In Touch</h2>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
               All enquiries are treated confidentially. Submitting the form opens a pre-filled
-              WhatsApp message to our team — you can review it before sending.
+              WhatsApp message to our team - you can review it before sending.
             </p>
 
             <form onSubmit={handleSubmit} className="mt-8 space-y-5">
@@ -109,11 +109,11 @@ function Contact() {
                   rows={5}
                   value={form.message}
                   onChange={update("message")}
-                  placeholder="Briefly describe your situation. Avoid sharing sensitive details here — our team will follow up confidentially."
+                  placeholder="Briefly describe your situation. Avoid sharing sensitive details here - our team will follow up confidentially."
                 />
               </div>
               <Button type="submit" variant="accent" size="xl" className="w-full sm:w-auto">
-                <MessageCircle /> Send via WhatsApp
+                Send
               </Button>
               {submitted && (
                 <p className="text-sm text-muted-foreground">

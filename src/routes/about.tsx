@@ -12,7 +12,7 @@ import { aboutContent, approachSteps } from "@/lib/site";
 
 const title = "About TRUE DETECTIVE | Investigation Agency Tamil Nadu & Bangalore";
 const description =
-  "Learn how TRUE DETECTIVE approaches private investigation and corporate intelligence — discreet enquiries, verification and fact-based reporting across Tamil Nadu and Bangalore.";
+  "Learn how TRUE DETECTIVE approaches private investigation and corporate intelligence - discreet enquiries, verification and fact-based reporting across Tamil Nadu and Bangalore.";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
