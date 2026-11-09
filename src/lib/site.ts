@@ -2,11 +2,10 @@ export const site = {
   name: "TRUE DETECTIVE",
   descriptor: "Private Investigation & Corporate Intelligence",
   tagline: "When Facts Matter, We Investigate.",
-  // Placeholder until the company's actual number is provided.
-  whatsappNumber: "0000000000",
-  phoneDisplay: "Phone number to be provided",
-  emailDisplay: "Email address to be provided",
-  addressDisplay: "Address to be provided, Tamil Nadu, India",
+  whatsappNumber: "919842251585",
+  phoneDisplay: "+91 98422 51585",
+  emailDisplay: "enquiry@truedetective.co.in",
+  addressDisplay: "Chennai 600088, Tamil Nadu, India",
   regions: ["Tamil Nadu", "Bangalore"],
 };
 
@@ -14,10 +13,10 @@ export const whatsappLink = `https://wa.me/${site.whatsappNumber}?text=${encodeU
   "Hello TRUE DETECTIVE, I would like to discuss a confidential requirement.",
 )}`;
 
-// Embeddable map - falls back to a Tamil Nadu-wide view until the exact office address is confirmed.
+// Embeddable map centred on the Chennai office area.
 export const mapEmbedSrc = `https://maps.google.com/maps?q=${encodeURIComponent(
   site.addressDisplay,
-)}&z=8&output=embed`;
+)}&z=13&output=embed`;
 
 export const navLinks = [
   { label: "Home", to: "/" },

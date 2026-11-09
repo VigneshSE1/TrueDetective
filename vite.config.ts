@@ -15,7 +15,7 @@ export default defineConfig(({ command }) => ({
     }),
     viteReact(),
     // Build-only deploy target; the dev server does not need nitro.
-    ...(command === "build" ? [nitro({ preset: "cloudflare-module" })] : []),
+    ...(command === "build" ? [nitro({ preset: process.env.VERCEL ? "vercel" : "cloudflare-module" })] : []),
   ],
   resolve: {
     dedupe: ["react", "react-dom"],
