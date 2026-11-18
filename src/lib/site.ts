@@ -22,66 +22,79 @@ export const navLinks = [
   { label: "Home", to: "/" },
   { label: "About", to: "/about" },
   { label: "Services", to: "/services" },
-  { label: "Private Investigations", to: "/private-investigations" },
-  { label: "Corporate Intelligence", to: "/corporate-intelligence" },
   { label: "Contact", to: "/contact" },
 ] as const;
 
 export const services = [
   {
-    title: "Matrimonial Investigations",
+    title: "Pre-Matrimonial Verification",
+    slug: "pre-matrimonial-verification",
+    icon: "matrimonial",
     description:
-      "Confidential and discreet investigation services for matrimonial and relationship-related concerns.",
+      "Discreet verification of a prospective partner's background, education, employment, family standing and reputation before a marriage is finalised.",
   },
   {
-    title: "Employee Verification",
+    title: "Post-Marriage Investigation",
+    slug: "post-marriage-investigation",
+    icon: "post-marriage",
     description:
-      "Employment and background verification to help organizations make informed hiring and business decisions.",
+      "Confidential fact-finding where there are concerns of infidelity, concealed finances or undisclosed circumstances, including evidence support for custody matters.",
   },
   {
-    title: "Litigation Support & Fact Finding",
+    title: "Employment Verification",
+    slug: "employment-verification",
+    icon: "employment",
     description:
-      "Investigation and fact-finding support for clients and legal professionals dealing with disputes and litigation.",
+      "Pre-employment and post-hire checks on work history, education, credentials, references and conduct to support confident hiring decisions.",
+  },
+  {
+    title: "Missing Person Tracing",
+    slug: "missing-person-tracing",
+    icon: "missing",
+    description:
+      "Structured, lawful search efforts using public records, enquiries and field observation to help trace missing or lost-contact individuals.",
   },
   {
     title: "Surveillance",
+    slug: "surveillance",
+    icon: "surveillance",
     description:
-      "Professional surveillance and observation assignments conducted within applicable laws and ethical boundaries.",
+      "Professional observation assignments with documented findings, conducted within applicable laws and ethical boundaries.",
+  },
+  {
+    title: "Insurance Claim Investigation",
+    slug: "insurance-claim-investigation",
+    icon: "insurance",
+    description:
+      "Independent fact verification of claims, including accident circumstances, to support fair settlement or to question doubtful claims.",
+  },
+  {
+    title: "Undercover Operations",
+    slug: "undercover-operations",
+    icon: "undercover",
+    description:
+      "Carefully planned, lawful discreet assignments to observe and report on workplace or business concerns that cannot be assessed openly.",
+  },
+  {
+    title: "Fingerprint & Handwriting Analysis",
+    slug: "fingerprint-handwriting-analysis",
+    icon: "fingerprint",
+    description:
+      "Comparison of handwriting, signatures and fingerprints against disputed documents to support questions of authenticity.",
   },
   {
     title: "Corporate Intelligence",
+    slug: "corporate-intelligence",
+    icon: "network",
     description:
       "Information gathering and analysis designed to help organizations understand potential risks, relationships and business environments.",
   },
   {
-    title: "Corporate Investigations",
+    title: "Litigation Support & Fact Finding",
+    slug: "litigation-support-fact-finding",
+    icon: "legal",
     description:
-      "Investigating suspected internal misconduct, business irregularities, conflicts of interest and other corporate concerns.",
-  },
-  {
-    title: "White-Collar Crime Investigations",
-    description:
-      "Fact-finding relating to suspected fraud, financial misconduct, deception and other business-related irregularities.",
-  },
-  {
-    title: "Brand Protection",
-    description:
-      "Investigation into counterfeit activity, unauthorized use, reputational concerns and threats affecting commercial interests.",
-  },
-  {
-    title: "Due Diligence",
-    description:
-      "Discreet information gathering and verification to support partnerships, investments, transactions and other important business decisions.",
-  },
-  {
-    title: "Discreet Enquiries",
-    description:
-      "Confidential enquiries to establish and verify relevant facts surrounding a specific individual, organization or situation.",
-  },
-  {
-    title: "Kickback & Conflict-of-Interest Investigations",
-    description:
-      "Investigating suspected undisclosed relationships, commissions, kickbacks and conflicts of interest.",
+      "Investigation and fact-finding support for clients and legal professionals dealing with disputes and litigation.",
   },
 ];
 
@@ -125,7 +138,7 @@ export const faqs = [
   },
   {
     q: "Do you provide corporate investigations?",
-    a: "Yes. We provide corporate investigation, fraud-related fact finding, employee verification, due diligence, kickback and conflict-of-interest investigation services.",
+    a: "Yes. We provide corporate intelligence, employment verification, undercover operations, insurance claim investigation and litigation support, along with fraud-related fact finding as part of corporate intelligence.",
   },
   {
     q: "Do you handle matrimonial investigations?",
@@ -134,6 +147,14 @@ export const faqs = [
   {
     q: "Do you provide litigation support?",
     a: "We provide fact-finding and investigation support for legal and litigation-related requirements, subject to applicable laws.",
+  },
+  {
+    q: "Can you help trace a missing person?",
+    a: "Yes. We carry out lawful, structured searches for missing or lost-contact individuals, working alongside your family and the police. If a person is found and does not wish to be contacted, we confirm their safety and respect their right to privacy.",
+  },
+  {
+    q: "Do you handle insurance claim investigations?",
+    a: "Yes. We provide independent fact-finding on claims, including accident circumstances, so that genuine claims are supported and doubtful ones are examined fairly.",
   },
   {
     q: "Can I speak to someone before hiring?",
@@ -153,95 +174,54 @@ export const aboutContent = {
   strapline: "Experience. Discretion. Intelligence. Results.",
   paragraphs: [
     "TRUE DETECTIVE is a professional private investigation and intelligence services firm providing discreet, reliable, and fact-based investigative support to individuals, businesses, and legal professionals.",
-    "Our team brings more than 8 years of experience in the investigation and intelligence industry, with a proven track record of successfully handling a wide range of personal, lifestyle, corporate, and investigative assignments. Over the years, we have worked across different types of matters, developing practical expertise in information gathering, surveillance, verification, background research, corporate intelligence, and fact-finding.",
-    "We understand that every investigation is different. Some matters are deeply personal, while others involve business risks, employee concerns, potential fraud, disputes, or legal proceedings. Our role is to approach each assignment objectively, discreetly, and professionally, helping our clients understand the facts and make informed decisions.",
+    "Our team brings over 10 years of experience in the investigation and intelligence industry. Over the years, we have successfully handled a wide range of assignments involving personal matters, lifestyle concerns, business-related issues, and corporate investigations.",
+    "Every assignment has given us an opportunity to face new challenges, understand different situations, and develop practical knowledge. Through these experiences, we have built strong skills in gathering information, conducting surveillance, verifying details, performing background checks, researching individuals and businesses, and uncovering facts.",
+    "We understand that every case is different and requires careful attention, patience, and the right approach. Our team takes the time to understand each client's needs and works towards finding accurate and useful information.",
+    "With our years of hands-on experience, we aim to provide reliable information, clear findings, and practical support to help our clients make informed decisions. We handle every assignment with professionalism, confidentiality, and responsibility.",
   ],
 };
 
-// Auto-rotating gallery on the About page. Placeholder imagery until themed
-// photography is supplied - captions describe the assignment type shown.
+// Auto-rotating gallery (About page and home page). Illustrated slides, one per
+// service theme; captions describe the assignment type shown.
 export const aboutGallery = [
   {
+    image: "matrimonial",
+    alt: "Illustration of wedding rings with background verification checks",
+    caption: "Pre-matrimonial verification",
+  },
+  {
+    image: "case-board",
+    alt: "Illustration of an investigation case board linking people and evidence",
+    caption: "Discreet investigation & fact-finding",
+  },
+  {
+    image: "corporate-investigation",
+    alt: "Illustration of a ledger with flagged entries under a magnifying glass",
+    caption: "Corporate & fraud investigations",
+  },
+  {
     image: "surveillance",
-    alt: "Field surveillance during a matrimonial verification assignment",
-    caption: "Matrimonial & background verification",
+    alt: "Illustration of a camera lens and viewfinder over a city skyline",
+    caption: "Surveillance & discreet photo evidence",
+  },
+  {
+    image: "corporate-intelligence",
+    alt: "Illustration of a network of connected entities with one flagged risk",
+    caption: "Corporate intelligence & risk mapping",
+  },
+  {
+    image: "employment",
+    alt: "Illustration of an ID card and résumé with a verified stamp",
+    caption: "Employment verification",
+  },
+  {
+    image: "missing-person",
+    alt: "Illustration of a map with a tracked route and location pin",
+    caption: "Missing person tracing",
   },
   {
     image: "documents",
-    alt: "Case notes and evidence being reviewed discreetly",
-    caption: "Discreet case documentation & fact-finding",
-  },
-  {
-    image: "corporate",
-    alt: "Confidential meeting during a workplace investigation",
-    caption: "Employee misconduct & workplace enquiries",
-  },
-  {
-    image: "hero-city",
-    alt: "Field observation in a corporate business district",
-    caption: "Corporate intelligence & risk investigation",
+    alt: "Illustration of a document, handwriting sample and fingerprint under a magnifier",
+    caption: "Fingerprint & handwriting analysis",
   },
 ] as const;
-
-export const privateInvestigationsContent = {
-  hero: {
-    eyebrow: "Private Investigations",
-    title: "Discreet Answers for Personal Matters",
-    description:
-      "Confidential investigation and fact-finding services for individuals dealing with matrimonial concerns, relationship doubts and other sensitive personal situations.",
-  },
-  intro: [
-    "Personal matters are rarely simple. They often involve conflicting information, emotional strain and decisions that carry lasting consequences.",
-    "TRUE DETECTIVE approaches every personal assignment with objectivity, discretion and care - helping clients understand the facts before they act.",
-  ],
-  matrimony: [
-    {
-      title: "Pre-Matrimony Verification",
-      why: "To help families and individuals make an informed decision before marriage, by verifying the background, character and circumstances of a prospective partner.",
-      what: "Background and identity verification, family and social standing checks, employment and financial standing checks, and character-related enquiries conducted discreetly.",
-      how: "Through confidential enquiries, verification of available records, and discreet fact-finding - always within applicable laws and professional boundaries.",
-    },
-    {
-      title: "Post-Matrimony Investigation",
-      why: "To help a spouse or family understand the facts where there is suspicion of infidelity, dishonesty or undisclosed circumstances within a marriage.",
-      what: "Discreet surveillance and observation, relationship-related fact finding, verification of claims and circumstances, and confidential reporting of findings.",
-      how: "Through careful, lawful surveillance and enquiry methods, with findings verified and presented clearly and confidentially to the client.",
-    },
-  ],
-  services: [
-    "Matrimonial investigations",
-    "Background verification",
-    "Personal enquiries",
-    "Surveillance",
-    "Relationship-related fact finding",
-    "Identity verification",
-    "Address verification",
-    "Asset-related enquiries where legally permissible",
-  ],
-};
-
-export const corporateIntelligenceContent = {
-  hero: {
-    eyebrow: "Corporate Intelligence",
-    title: "Understand Risk Before It Affects Your Business",
-    description:
-      "Information gathering, verification and analysis designed to help organizations understand potential risks, relationships and business environments.",
-  },
-  intro: [
-    "Business risks are not always visible. Internal misconduct, fraudulent activity, conflicts of interest, undisclosed relationships and commercial risks can affect organizations of any size.",
-    "TRUE DETECTIVE helps businesses gather and verify relevant information so leadership can make informed, well-supported decisions.",
-  ],
-  why: "To give organizations a clear, fact-based understanding of the people, partners and risks connected to their business before those risks turn into losses or disputes.",
-  what: "Corporate investigations, due diligence, employee verification, kickback and conflict-of-interest investigations, brand protection and litigation support.",
-  how: "Through discreet enquiries, verification of records and claims, structured surveillance where appropriate, and clear, confidential reporting of findings.",
-  services: [
-    "Corporate investigations",
-    "White-collar crime investigations",
-    "Employee verification",
-    "Due diligence",
-    "Kickback & conflict-of-interest investigations",
-    "Brand protection",
-    "Litigation support & fact finding",
-    "Discreet enquiries",
-  ],
-};

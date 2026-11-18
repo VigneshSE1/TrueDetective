@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ShieldCheck,
@@ -9,6 +10,11 @@ import {
   Users,
   Scale,
   Network,
+  CheckCircle2,
+  MapPin,
+  Search,
+  BadgeCheck,
+  Handshake,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -22,11 +28,14 @@ import {
   CtaRow,
   ConfidentialityBanner,
   LocationSection,
+  AboutGallery,
+  ServicesGrid,
 } from "@/components/site/Blocks";
-import { aboutContent, services, approachSteps, faqs, whatsappLink } from "@/lib/site";
-import heroImage from "@/assets/hero-city.jpg";
-import documentsImage from "@/assets/documents.jpg";
-import corporateImage from "@/assets/corporate.jpg";
+import { ClientsSection } from "@/components/site/Clients";
+import { WhyUsSection } from "@/components/site/WhyUs";
+import { CorporateSection, PersonalSection } from "@/components/site/InvestigationSections";
+import { aboutContent, approachSteps, faqs, whatsappLink } from "@/lib/site";
+import heroImage from "@/assets/hero-banner.svg";
 
 const title = "Private Investigation & Corporate Intelligence | TRUE DETECTIVE";
 const description =
@@ -69,55 +78,145 @@ const trust = [
   },
 ];
 
-const why = [
-  {
-    title: "Confidentiality",
-    text: "Sensitive information is handled with strict discretion.",
-  },
-  {
-    title: "Professional Approach",
-    text: "Every assignment is handled systematically and responsibly.",
-  },
-  {
-    title: "Discreet Operations",
-    text: "We understand the importance of maintaining confidentiality during sensitive enquiries.",
-  },
-  {
-    title: "Fact-Focused",
-    text: "Our work is centered on gathering and verifying relevant information.",
-  },
-  {
-    title: "Client-Focused",
-    text: "Investigation strategies are aligned with the client's specific objectives.",
-  },
-  {
-    title: "Regional Understanding",
-    text: "We operate across Tamil Nadu and Bangalore and understand the local environment.",
-  },
+const aboutHighlights = [
+  "Over 10 years of hands-on experience across personal, lifestyle and corporate assignments.",
+  "Skilled in surveillance, verification, background checks and fact-finding.",
+  "Clear findings and practical support, handled with confidentiality and professionalism.",
 ];
 
-const clients = [
+const objectiveSteps = [
+  { icon: Search, word: "Find", text: "the facts." },
+  { icon: BadgeCheck, word: "Verify", text: "the information." },
+  { icon: Handshake, word: "Help", text: "our clients make informed decisions." },
+];
+
+function ObjectiveBand() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [shown, setShown] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || typeof IntersectionObserver === "undefined") {
+      setShown(true);
+      return;
+    }
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          setShown(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.3 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className="mt-16 overflow-hidden rounded-lg bg-navy px-6 py-10 text-navy-foreground sm:px-12 sm:py-12"
+    >
+      <p className="text-center text-xs font-semibold uppercase tracking-[0.3em] text-accent">
+        Our objective is simple
+      </p>
+      <div className="relative mt-10">
+        <div
+          aria-hidden
+          className="absolute top-7 right-[16.6%] left-[16.6%] hidden h-px bg-navy-foreground/15 md:block"
+        >
+          {shown && <div className="animate-draw h-full bg-accent" style={{ animationDuration: "2.2s" }} />}
+        </div>
+        <ol className="relative grid gap-10 md:grid-cols-3">
+          {objectiveSteps.map((step, i) => (
+            <li
+              key={step.word}
+              className={`text-center ${shown ? "animate-rise" : "opacity-0"}`}
+              style={{ animationDelay: `${i * 0.7}s` }}
+            >
+              <span className="relative mx-auto flex size-14 items-center justify-center rounded-full bg-navy text-accent ring-2 ring-accent/60">
+                {shown && (
+                  <span
+                    aria-hidden
+                    className="animate-ping-once absolute inset-0 rounded-full ring-2 ring-accent"
+                    style={{ animationDelay: `${i * 0.7 + 0.3}s` }}
+                  />
+                )}
+                <step.icon className="size-6" strokeWidth={1.6} />
+              </span>
+              <p className="mt-5 font-display text-2xl text-accent sm:text-3xl">{step.word}</p>
+              <p className="mt-1 text-sm text-navy-foreground/75 sm:text-base">{step.text}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  );
+}
+
+const audiences = [
   {
     icon: Users,
     title: "Individuals",
-    text: "Personal investigations, matrimonial matters and confidential enquiries.",
+    text: "Discreet help with personal, matrimonial and family concerns.",
   },
   {
     icon: Building2,
     title: "Businesses",
-    text: "Corporate investigations, employee verification, fraud concerns and due diligence.",
+    text: "Verification, fact-finding and intelligence for confident decisions.",
   },
   {
     icon: Scale,
     title: "Legal Professionals",
-    text: "Fact finding and investigation support related to legal matters.",
-  },
-  {
-    icon: Network,
-    title: "Organizations",
-    text: "Corporate intelligence, risk investigation and brand protection.",
+    text: "Investigation and fact-finding support for disputes and litigation.",
   },
 ];
+
+// Cards appear one after another the first time the block scrolls into view.
+function WhoWeServe() {
+  const ref = useRef<HTMLUListElement>(null);
+  const [shown, setShown] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || typeof IntersectionObserver === "undefined") {
+      setShown(true);
+      return;
+    }
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          setShown(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.25 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  return (
+    <ul ref={ref} className="mt-8 grid gap-3 sm:grid-cols-3">
+      {audiences.map((a, i) => (
+        <li
+          key={a.title}
+          className={`rounded-lg border border-border bg-card p-4 shadow-sm ${
+            shown ? "animate-rise" : "opacity-0"
+          }`}
+          style={{ animationDelay: `${i * 0.25}s` }}
+        >
+          <span className="relative flex size-14 items-center justify-center rounded-full bg-navy text-accent ring-2 ring-accent/40 ring-offset-2 ring-offset-card">
+            <a.icon className="size-6" strokeWidth={1.6} />
+          </span>
+          <h3 className="mt-4 text-base font-semibold">{a.title}</h3>
+          <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{a.text}</p>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 function Home() {
   return (
@@ -126,24 +225,35 @@ function Home() {
       <section className="relative isolate overflow-hidden bg-navy text-navy-foreground">
         <img
           src={heroImage}
-          alt="City business district at dusk, viewed through a high-rise window"
+          alt="Illustration of a camera lens, magnifying glass and evidence photos over the Chennai skyline"
           width={1920}
           height={1088}
-          className="absolute inset-0 -z-10 h-full w-full object-cover opacity-45"
+          className="absolute inset-0 -z-10 h-full w-full object-cover object-right"
         />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy via-navy/85 to-navy/35" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy via-navy/80 to-transparent" />
         <div className="container-td py-28 lg:py-40">
-          <div className="max-w-3xl animate-rise">
-            <p className="eyebrow">Private Investigation &amp; Corporate Intelligence</p>
+          <div className="max-w-3xl">
+            <p className="eyebrow animate-rise">Private Investigation &amp; Corporate Intelligence</p>
             <h1 className="mt-6 text-4xl leading-[1.06] sm:text-5xl lg:text-[3.9rem]">
-              When Facts Matter, We Investigate.
+              {["When", "Facts", "Matter,", "We", "Investigate."].map((word, i) => (
+                <span
+                  key={word}
+                  className={`animate-word mr-[0.28em] ${word === "Investigate." ? "text-accent" : ""}`}
+                  style={{ animationDelay: `${0.25 + i * 0.16}s` }}
+                >
+                  {word}
+                </span>
+              ))}
             </h1>
-            <p className="mt-7 max-w-2xl text-lg leading-relaxed text-navy-foreground/70">
+            <p
+              className="animate-rise mt-7 max-w-2xl text-lg leading-relaxed text-navy-foreground/70"
+              style={{ animationDelay: "1.25s" }}
+            >
               Confidential and professional investigative services, including surveillance,
               verification, and fact-finding, for individuals, businesses, and legal professionals
               across Tamil Nadu.
             </p>
-            <div className="mt-10 flex flex-wrap gap-3">
+            <div className="animate-rise mt-10 flex flex-wrap gap-3" style={{ animationDelay: "1.5s" }}>
               <Button asChild variant="accent" size="xl">
                 <Link to="/contact">Request a Confidential Consultation</Link>
               </Button>
@@ -175,38 +285,57 @@ function Home() {
 
       {/* About */}
       <section className="section-y">
-        <div className="container-td grid gap-14 lg:grid-cols-2 lg:items-center">
-          <div>
-            <SectionHeading eyebrow={aboutContent.eyebrow} title={aboutContent.strapline} />
-            <div className="mt-6 space-y-4 text-muted-foreground">
-              {aboutContent.paragraphs.map((p) => (
-                <p key={p}>{p}</p>
-              ))}
+        <div className="container-td">
+          <div className="grid gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+            <div>
+              <SectionHeading eyebrow={aboutContent.eyebrow} title={aboutContent.strapline} />
+              <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+                {aboutContent.paragraphs[0]}
+              </p>
+              <WhoWeServe />
+              <ul className="mt-8 space-y-3">
+                {aboutHighlights.map((h) => (
+                  <li key={h} className="flex gap-3 text-sm leading-relaxed sm:text-base">
+                    <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-accent" />
+                    <span>{h}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3">
+                <Button asChild variant="navy" size="xl">
+                  <Link to="/contact">Talk to Our Team Confidentially</Link>
+                </Button>
+                <Link
+                  to="/about"
+                  className="group inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-foreground hover:text-accent"
+                >
+                  More about us
+                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </div>
             </div>
-            <blockquote className="rule-accent mt-8 text-foreground">
-              <p className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
-                Our objective is simple
-              </p>
-              <p className="mt-2 font-display text-xl leading-snug">
-                Find the facts. Verify the information. Help our clients make informed decisions.
-              </p>
-            </blockquote>
-            <div className="mt-8">
-              <Button asChild variant="navy" size="xl">
-                <Link to="/contact">Talk to Our Team Confidentially</Link>
-              </Button>
+
+            <div className="relative lg:pl-6 lg:pb-8">
+              <div
+                aria-hidden
+                className="absolute inset-y-6 right-[-14px] left-10 hidden rounded-lg border-2 border-accent/50 lg:block"
+              />
+              <div className="relative">
+                <AboutGallery className="relative" />
+                <span className="absolute top-4 right-4 inline-flex items-center gap-1.5 rounded-full bg-navy/85 px-3 py-1.5 text-xs font-semibold uppercase tracking-widest text-navy-foreground backdrop-blur">
+                  <MapPin className="size-3.5 text-accent" /> Tamil Nadu &amp; Bangalore
+                </span>
+              </div>
+              <div className="absolute top-6 left-0 rounded-lg bg-navy px-5 py-4 text-navy-foreground shadow-elegant">
+                <p className="font-display text-4xl leading-none text-accent">10+</p>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-navy-foreground/70">
+                  Years of experience
+                </p>
+              </div>
             </div>
           </div>
-          <div className="overflow-hidden rounded-lg shadow-elegant">
-            <img
-              src={documentsImage}
-              alt="Investigator reviewing confidential case documents"
-              width={1600}
-              height={1104}
-              loading="lazy"
-              className="h-full w-full object-cover"
-            />
-          </div>
+
+          <ObjectiveBand />
         </div>
       </section>
 
@@ -218,145 +347,17 @@ function Home() {
             title="Our Investigation Services"
             subtitle="Professional investigation and intelligence solutions for personal, legal and corporate requirements."
           />
-          <div className="mt-14 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((s) => (
-              <article
-                key={s.title}
-                className="group bg-card p-8 transition-colors hover:bg-navy hover:text-navy-foreground"
-              >
-                <div className="h-px w-10 bg-accent" />
-                <h3 className="mt-6 text-lg leading-snug">{s.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground group-hover:text-navy-foreground/70">
-                  {s.description}
-                </p>
-              </article>
-            ))}
+          <div className="mt-14">
+            <ServicesGrid />
           </div>
         </div>
       </section>
 
       {/* Corporate */}
-      <section className="section-y">
-        <div className="container-td grid gap-14 lg:grid-cols-2 lg:items-center">
-          <div className="order-2 overflow-hidden rounded-lg shadow-elegant lg:order-1">
-            <img
-              src={corporateImage}
-              alt="Corporate boardroom prepared for a confidential briefing"
-              width={1600}
-              height={1104}
-              loading="lazy"
-              className="h-full w-full object-cover"
-            />
-          </div>
-          <div className="order-1 lg:order-2">
-            <SectionHeading
-              eyebrow="For Business"
-              title="Protect Your Business With Better Intelligence"
-            />
-            <div className="mt-6 space-y-4 text-muted-foreground">
-              <p>Business risks are not always visible.</p>
-              <p>
-                Internal misconduct, fraudulent activity, conflicts of interest, undisclosed
-                relationships and commercial risks can impact organizations significantly.
-              </p>
-              <p>
-                TRUE DETECTIVE helps businesses investigate concerns, verify information and
-                understand potential risks through discreet and structured investigation.
-              </p>
-            </div>
-            <ul className="mt-8 grid gap-2 sm:grid-cols-2">
-              {[
-                "Corporate investigations",
-                "Fraud investigations",
-                "Employee verification",
-                "Kickback investigations",
-                "Conflict-of-interest investigations",
-                "Due diligence",
-                "Brand protection",
-                "Corporate intelligence",
-                "Litigation support",
-              ].map((i) => (
-                <li key={i} className="flex items-start gap-2 text-sm text-foreground">
-                  <span className="mt-2 size-1.5 shrink-0 rounded-full bg-accent" />
-                  {i}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-9">
-              <Button asChild variant="navy" size="xl">
-                <Link to="/corporate-intelligence">Discuss a Corporate Requirement</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <CorporateSection />
 
       {/* Individuals */}
-      <section className="border-y border-border bg-surface">
-        <div className="container-td section-y grid gap-14 lg:grid-cols-2">
-          <div>
-            <SectionHeading
-              eyebrow="Private Investigations"
-              title="When Personal Matters Require Answers"
-            />
-            <div className="mt-6 space-y-4 text-muted-foreground">
-              <p>
-                Personal situations can involve uncertainty, conflicting information and difficult
-                decisions.
-              </p>
-              <p>
-                TRUE DETECTIVE provides discreet investigation and fact-finding services for
-                individuals dealing with sensitive personal matters.
-              </p>
-            </div>
-            <div className="mt-8">
-              <Button asChild variant="navy" size="xl">
-                <Link to="/private-investigations">Speak With Us Confidentially</Link>
-              </Button>
-            </div>
-          </div>
-          <ul className="grid gap-px self-start bg-border sm:grid-cols-2">
-            {[
-              "Matrimonial investigations",
-              "Background verification",
-              "Personal enquiries",
-              "Surveillance",
-              "Relationship-related fact finding",
-              "Identity verification",
-              "Address verification",
-              "Asset-related enquiries where legally permissible",
-            ].map((i) => (
-              <li key={i} className="bg-card p-5 text-sm leading-relaxed">
-                {i}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* Due diligence */}
-      <section className="section-y">
-        <div className="container-td">
-          <div className="grid gap-10 rounded-lg border border-border bg-card p-10 shadow-elegant lg:grid-cols-[1fr_1fr] lg:items-center lg:p-14">
-            <SectionHeading eyebrow="Due Diligence" title="Know Who You Are Dealing With" />
-            <div className="space-y-4 text-muted-foreground">
-              <p>
-                Before entering into an important business relationship, partnership, investment or
-                transaction, understanding the available facts can be critical.
-              </p>
-              <p>
-                Our due diligence services help clients gather and verify relevant information to
-                support informed decision-making.
-              </p>
-              <div className="pt-2">
-                <Button asChild variant="accent" size="xl">
-                  <Link to="/contact">Request Due Diligence Support</Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PersonalSection />
 
       {/* Approach */}
       <section className="bg-navy text-navy-foreground">
@@ -383,38 +384,10 @@ function Home() {
       </section>
 
       {/* Why */}
-      <section className="section-y">
-        <div className="container-td">
-          <SectionHeading eyebrow="Why Us" title="Why Clients Choose TRUE DETECTIVE" />
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {why.map((w) => (
-              <div
-                key={w.title}
-                className="rounded-lg border border-border bg-card p-7 transition-shadow hover:shadow-elegant"
-              >
-                <h3 className="text-base font-semibold">{w.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{w.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <WhyUsSection />
 
       {/* Who we serve */}
-      <section className="border-y border-border bg-surface">
-        <div className="container-td section-y">
-          <SectionHeading eyebrow="Clients" title="Who We Work With" />
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {clients.map((c) => (
-              <div key={c.title} className="rounded-lg border border-border bg-card p-7">
-                <c.icon className="size-5 text-accent" />
-                <h3 className="mt-5 text-base font-semibold">{c.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{c.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ClientsSection />
 
       <ConfidentialityBanner />
 

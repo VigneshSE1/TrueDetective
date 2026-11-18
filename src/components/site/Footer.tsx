@@ -7,8 +7,6 @@ const footerLinks = [
   { label: "Home", to: "/" },
   { label: "About", to: "/about" },
   { label: "Services", to: "/services" },
-  { label: "Private Investigations", to: "/private-investigations" },
-  { label: "Corporate Intelligence", to: "/corporate-intelligence" },
   { label: "Contact", to: "/contact" },
   { label: "Privacy Policy", to: "/privacy" },
   { label: "Terms & Conditions", to: "/terms" },
@@ -20,7 +18,7 @@ export function Footer() {
       <div className="container-td grid gap-12 py-16 md:grid-cols-3">
         <div>
           <div className="flex items-center gap-3">
-            <Logo className="size-9 text-navy-foreground" />
+            <Logo onDark className="h-12 w-auto" />
             <p className="font-display text-xl font-bold tracking-[0.2em]">{site.name}</p>
           </div>
           <p className="mt-2 text-sm text-navy-foreground/60">{site.descriptor}</p>
