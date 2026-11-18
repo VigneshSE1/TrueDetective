@@ -1,10 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHero, CtaRow, ConfidentialityBanner, SectionHeading } from "@/components/site/Blocks";
-import { services } from "@/lib/site";
+import {
+  PageHero,
+  CtaRow,
+  ConfidentialityBanner,
+  SectionHeading,
+  ServicesGrid,
+} from "@/components/site/Blocks";
 
 const title = "Investigation Services | Corporate, Fraud & Matrimonial | TRUE DETECTIVE";
 const description =
-  "Corporate investigations, fraud investigation, employee verification, due diligence, surveillance, litigation support and matrimonial investigation services in Tamil Nadu and Bangalore.";
+  "Pre and post-matrimonial investigation, employment verification, missing person tracing, surveillance, insurance claim investigation, corporate intelligence, due diligence and fraud investigation in Tamil Nadu and Bangalore.";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -32,19 +37,8 @@ function Services() {
       </PageHero>
 
       <section className="section-y">
-        <div className="container-td grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((s) => (
-            <article
-              key={s.title}
-              className="group bg-card p-8 transition-colors hover:bg-navy hover:text-navy-foreground"
-            >
-              <div className="h-px w-10 bg-accent" />
-              <h2 className="mt-6 text-lg leading-snug">{s.title}</h2>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground group-hover:text-navy-foreground/70">
-                {s.description}
-              </p>
-            </article>
-          ))}
+        <div className="container-td">
+          <ServicesGrid headingLevel="h2" />
         </div>
       </section>
 

@@ -12,9 +12,8 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
-import { Route as CorporateIntelligenceRouteImport } from './routes/corporate-intelligence'
-import { Route as PrivateInvestigationsRouteImport } from './routes/private-investigations'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as ServicesSlugRouteImport } from './routes/services_.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -31,19 +30,14 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CorporateIntelligenceRoute = CorporateIntelligenceRouteImport.update({
-  id: '/corporate-intelligence',
-  path: '/corporate-intelligence',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PrivateInvestigationsRoute = PrivateInvestigationsRouteImport.update({
-  id: '/private-investigations',
-  path: '/private-investigations',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesSlugRoute = ServicesSlugRouteImport.update({
+  id: '/services_/$slug',
+  path: '/services/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -51,61 +45,39 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/corporate-intelligence': typeof CorporateIntelligenceRoute
-  '/private-investigations': typeof PrivateInvestigationsRoute
   '/services': typeof ServicesRoute
+  '/services/$slug': typeof ServicesSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/corporate-intelligence': typeof CorporateIntelligenceRoute
-  '/private-investigations': typeof PrivateInvestigationsRoute
   '/services': typeof ServicesRoute
+  '/services/$slug': typeof ServicesSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/corporate-intelligence': typeof CorporateIntelligenceRoute
-  '/private-investigations': typeof PrivateInvestigationsRoute
   '/services': typeof ServicesRoute
+  '/services_/$slug': typeof ServicesSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/about'
-    | '/contact'
-    | '/corporate-intelligence'
-    | '/private-investigations'
-    | '/services'
+  fullPaths: '/' | '/about' | '/contact' | '/services' | '/services/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/about'
-    | '/contact'
-    | '/corporate-intelligence'
-    | '/private-investigations'
-    | '/services'
+  to: '/' | '/about' | '/contact' | '/services' | '/services/$slug'
   id:
-    | '__root__'
-    | '/'
-    | '/about'
-    | '/contact'
-    | '/corporate-intelligence'
-    | '/private-investigations'
-    | '/services'
+    '__root__' | '/' | '/about' | '/contact' | '/services' | '/services_/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
-  CorporateIntelligenceRoute: typeof CorporateIntelligenceRoute
-  PrivateInvestigationsRoute: typeof PrivateInvestigationsRoute
   ServicesRoute: typeof ServicesRoute
+  ServicesSlugRoute: typeof ServicesSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -131,25 +103,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/corporate-intelligence': {
-      id: '/corporate-intelligence'
-      path: '/corporate-intelligence'
-      fullPath: '/corporate-intelligence'
-      preLoaderRoute: typeof CorporateIntelligenceRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/private-investigations': {
-      id: '/private-investigations'
-      path: '/private-investigations'
-      fullPath: '/private-investigations'
-      preLoaderRoute: typeof PrivateInvestigationsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/services': {
       id: '/services'
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services_/$slug': {
+      id: '/services_/$slug'
+      path: '/services/$slug'
+      fullPath: '/services/$slug'
+      preLoaderRoute: typeof ServicesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -159,9 +124,8 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
-  CorporateIntelligenceRoute: CorporateIntelligenceRoute,
-  PrivateInvestigationsRoute: PrivateInvestigationsRoute,
   ServicesRoute: ServicesRoute,
+  ServicesSlugRoute: ServicesSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
