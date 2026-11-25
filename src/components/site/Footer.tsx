@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { MessageCircle, Phone, Mail, MapPin } from "lucide-react";
-import { Logo } from "@/components/site/Logo";
+import { Logo, Wordmark } from "@/components/site/Logo";
 import { site, whatsappLink, legalDisclaimer } from "@/lib/site";
 
 const footerLinks = [
@@ -18,8 +18,8 @@ export function Footer() {
       <div className="container-td grid gap-12 py-16 md:grid-cols-3">
         <div>
           <div className="flex items-center gap-3">
-            <Logo onDark className="size-12" />
-            <p className="font-display text-xl font-bold tracking-[0.2em]">{site.name}</p>
+            <Logo onDark className="size-20 ring-2 ring-accent/50" />
+            <Wordmark onDark className="text-2xl" />
           </div>
           <p className="mt-2 text-sm text-navy-foreground/60">{site.descriptor}</p>
           <p className="mt-6 max-w-xs text-lg text-navy-foreground/90">

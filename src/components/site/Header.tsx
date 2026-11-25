@@ -4,7 +4,7 @@ import { ChevronDown, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { navLinks, services, site } from "@/lib/site";
 import { serviceStyles } from "@/components/site/Blocks";
-import { Logo } from "@/components/site/Logo";
+import { Logo, Wordmark } from "@/components/site/Logo";
 import { cn } from "@/lib/utils";
 
 export function Header() {
@@ -28,17 +28,15 @@ export function Header() {
           : "border-transparent bg-background",
       )}
     >
-      <div className="container-td flex h-20 items-center justify-between gap-6">
+      <div className="container-td flex h-24 items-center justify-between gap-6">
         <Link
           to="/"
           className="group flex items-center gap-3 leading-none"
           onClick={() => setOpen(false)}
         >
-          <Logo className="size-12" />
+          <Logo className="size-14 shadow-md sm:size-20" />
           <span className="flex flex-col">
-            <span className="font-display text-lg font-bold tracking-[0.2em] text-foreground">
-              TRUE DETECTIVE
-            </span>
+            <Wordmark className="text-xl sm:text-2xl" />
             <span className="mt-1 whitespace-nowrap text-[0.62rem] uppercase tracking-[0.16em] text-muted-foreground">
               {site.descriptor}
             </span>

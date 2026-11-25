@@ -9,7 +9,7 @@ import {
 
 const title = "Investigation Services | Corporate, Fraud & Matrimonial | TRUE DETECTIVE";
 const description =
-  "Pre and post-matrimonial investigation, employment verification, missing person tracing, surveillance, insurance claim investigation, corporate intelligence, due diligence and fraud investigation in Tamil Nadu and Bangalore.";
+  "Pre and post-matrimonial investigation, employment verification, missing person tracing, surveillance, insurance claim investigation, corporate intelligence, due diligence and fraud investigation in Tamil Nadu.";
 
 export const Route = createFileRoute("/services")({
   head: () => ({

@@ -12,6 +12,7 @@ import type { ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
+import { ServicePopup } from "@/components/site/ServicePopup";
 
 function NotFoundComponent() {
   return (
@@ -124,6 +125,7 @@ function RootComponent() {
           <Outlet />
         </main>
         <Footer />
+        <ServicePopup />
       </div>
     </QueryClientProvider>
   );

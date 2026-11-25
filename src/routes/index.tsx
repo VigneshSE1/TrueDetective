@@ -35,12 +35,11 @@ import { ClientsSection } from "@/components/site/Clients";
 import { WhyUsSection } from "@/components/site/WhyUs";
 import { CorporateSection, PersonalSection } from "@/components/site/InvestigationSections";
 import { aboutContent, approachSteps, faqs, whatsappLink } from "@/lib/site";
-import { LogoWatermark } from "@/components/site/Logo";
-import heroImage from "@/assets/hero-banner.svg";
+import { LogoWatermark, Wordmark } from "@/components/site/Logo";
 
 const title = "Private Investigation & Corporate Intelligence | TRUE DETECTIVE";
 const description =
-  "TRUE DETECTIVE provides discreet private investigation, surveillance, verification and corporate intelligence services across Tamil Nadu and Bangalore.";
+  "TRUE DETECTIVE provides discreet private investigation, surveillance, verification and corporate intelligence services across Tamil Nadu.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -77,6 +76,13 @@ const trust = [
     title: "Discreet",
     text: "We understand the importance of confidentiality in sensitive matters.",
   },
+];
+
+const pillars = [
+  { term: "Experience", text: "A decade of field work across personal, lifestyle and corporate matters." },
+  { term: "Discretion", text: "Your information is handled privately and shared only as appropriate." },
+  { term: "Intelligence", text: "Careful research and verification, not guesswork or assumptions." },
+  { term: "Results", text: "Clear, fact-based findings you can act on with confidence." },
 ];
 
 const aboutHighlights = [
@@ -224,18 +230,15 @@ function Home() {
     <>
       {/* Hero */}
       <section className="relative isolate overflow-hidden bg-navy text-navy-foreground">
-        <img
-          src={heroImage}
-          alt="Illustration of a camera lens, magnifying glass and evidence photos over the Chennai skyline"
-          width={1920}
-          height={1088}
-          className="absolute inset-0 -z-10 h-full w-full object-cover object-right"
-        />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy via-navy/80 to-transparent" />
-        <LogoWatermark className="absolute top-1/2 right-[4%] -z-10 hidden size-[34rem] -translate-y-1/2 lg:block" />
+        <LogoWatermark toss className="absolute top-1/2 right-[4%] -z-10 hidden size-[34rem] -translate-y-1/2 lg:block" />
         <div className="container-td py-28 lg:py-40">
           <div className="max-w-3xl">
-            <p className="eyebrow animate-rise">Private Investigation &amp; Corporate Intelligence</p>
+            <Wordmark
+              className="animate-rise block text-3xl sm:text-4xl lg:text-5xl"
+              style={{ animationDelay: "3s" }}
+              onDark
+            />
+            <p className="eyebrow animate-rise mt-5">Private Investigation &amp; Corporate Intelligence</p>
             <h1 className="mt-6 text-4xl leading-[1.06] sm:text-5xl lg:text-[3.9rem]">
               {["When", "Facts", "Matter,", "We", "Investigate."].map((word, i) => (
                 <span
@@ -265,6 +268,51 @@ function Home() {
                 </Link>
               </Button>
             </div>
+            <div className="mt-14 max-w-3xl">
+              <div aria-hidden className="h-px bg-navy-foreground/15">
+                <div
+                  className="animate-draw h-full bg-accent"
+                  style={{ animationDuration: "2.4s", animationDelay: "1.7s" }}
+                />
+              </div>
+              <ol className="mt-8 grid gap-6 sm:grid-cols-3">
+                {objectiveSteps.map((step, i) => {
+                  const delay = 1.9 + i * 0.6;
+                  return (
+                    <li
+                      key={step.word}
+                      className="animate-rise group flex items-start gap-4"
+                      style={{ animationDelay: `${delay}s` }}
+                    >
+                      <span className="relative flex size-12 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent ring-1 ring-accent/50 transition-transform duration-300 group-hover:scale-110">
+                        <span
+                          aria-hidden
+                          className="animate-ping-once absolute inset-0 rounded-full ring-2 ring-accent"
+                          style={{ animationDelay: `${delay + 0.3}s` }}
+                        />
+                        <span
+                          aria-hidden
+                          className="animate-halo absolute inset-0 rounded-full bg-accent/30"
+                          style={{ animationDelay: `${delay + 1.4}s` }}
+                        />
+                        <step.icon className="relative size-5" strokeWidth={1.6} />
+                      </span>
+                      <div>
+                        <p className="font-display text-xs tracking-[0.2em] text-accent">
+                          {String(i + 1).padStart(2, "0")}
+                        </p>
+                        <p className="mt-0.5 font-display text-xl text-navy-foreground">
+                          {step.word}
+                        </p>
+                        <p className="mt-1 text-sm leading-snug text-navy-foreground/70">
+                          {step.text}
+                        </p>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ol>
+            </div>
           </div>
         </div>
       </section>
@@ -292,8 +340,22 @@ function Home() {
             <div>
               <SectionHeading eyebrow={aboutContent.eyebrow} title={aboutContent.strapline} />
               <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-                {aboutContent.paragraphs[0]}
+                Every assignment starts with listening. We take the time to understand your
+                situation, agree on what needs to be established, and then work methodically
+                towards accurate, usable answers.
               </p>
+              <dl className="mt-6 grid gap-x-8 gap-y-4 sm:grid-cols-2">
+                {pillars.map((p) => (
+                  <div key={p.term} className="rule-accent">
+                    <dt className="font-display text-base font-semibold text-foreground">
+                      {p.term}
+                    </dt>
+                    <dd className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                      {p.text}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
               <WhoWeServe />
               <ul className="mt-8 space-y-3">
                 {aboutHighlights.map((h) => (
@@ -325,14 +387,8 @@ function Home() {
               <div className="relative">
                 <AboutGallery className="relative" />
                 <span className="absolute top-4 right-4 inline-flex items-center gap-1.5 rounded-full bg-navy/85 px-3 py-1.5 text-xs font-semibold uppercase tracking-widest text-navy-foreground backdrop-blur">
-                  <MapPin className="size-3.5 text-accent" /> Tamil Nadu &amp; Bangalore
+                  <MapPin className="size-3.5 text-accent" /> Tamil Nadu
                 </span>
-              </div>
-              <div className="absolute top-6 left-0 rounded-lg bg-navy px-5 py-4 text-navy-foreground shadow-elegant">
-                <p className="font-display text-4xl leading-none text-accent">10+</p>
-                <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-navy-foreground/70">
-                  Years of experience
-                </p>
               </div>
             </div>
           </div>
