@@ -34,7 +34,7 @@ export function Header() {
           className="group flex items-center gap-3 leading-none"
           onClick={() => setOpen(false)}
         >
-          <Logo className="size-14 shadow-md sm:size-20" />
+          <Logo bare className="size-16 sm:size-[5.5rem]" />
           <span className="flex flex-col">
             <Wordmark className="text-xl sm:text-2xl" />
             <span className="mt-1 whitespace-nowrap text-[0.62rem] uppercase tracking-[0.16em] text-muted-foreground">

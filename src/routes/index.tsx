@@ -323,7 +323,7 @@ function Home() {
           {trust.map((t) => (
             <div
               key={t.title}
-              className="border-border px-1 py-10 sm:px-6 lg:border-l lg:first:border-l-0"
+              className="border-border px-1 py-10 sm:px-6 lg:border-l lg:first:border-l-0 lg:first:pl-0"
             >
               <t.icon className="size-5 text-accent" />
               <h3 className="mt-5 text-base font-semibold">{t.title}</h3>

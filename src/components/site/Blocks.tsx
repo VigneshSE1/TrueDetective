@@ -184,7 +184,7 @@ export function PageHero({
 }) {
   return (
     <section className="relative isolate overflow-hidden bg-navy text-navy-foreground">
-      <LogoWatermark toss={tossLogo} className="absolute top-1/2 right-[-4rem] -z-10 hidden size-[30rem] -translate-y-1/2 lg:block" />
+      <LogoWatermark toss={tossLogo} className="absolute top-1/2 right-[4%] -z-10 hidden size-[26rem] -translate-y-1/2 lg:block" />
       <div className="container-td py-20 lg:py-28">
         <div className="max-w-3xl animate-rise">
           <p className="eyebrow">{eyebrow}</p>
@@ -395,6 +395,9 @@ export function ServicesGrid({ headingLevel = "h3" }: { headingLevel?: "h2" | "h
         const gradient = `linear-gradient(135deg, ${from}, ${to})`;
         const image = serviceImages[s.slug];
         const delay = (i % 6) * 0.08;
+        // A lone card in the last row spans the full width (side-by-side layout)
+        // instead of leaving empty grey cells.
+        const wide = i === services.length - 1 && services.length % 3 === 1;
         return (
           <Link
             key={s.title}
@@ -402,11 +405,17 @@ export function ServicesGrid({ headingLevel = "h3" }: { headingLevel?: "h2" | "h
             params={{ slug: s.slug }}
             className={cn(
               "group relative flex flex-col overflow-hidden bg-card transition-colors duration-500 hover:bg-navy hover:text-navy-foreground",
+              wide && "lg:col-span-3 lg:flex-row",
               shown ? "animate-rise" : "opacity-0",
             )}
             style={{ animationDelay: `${delay}s` }}
           >
-            <div className="relative aspect-[16/8] overflow-hidden bg-navy">
+            <div
+              className={cn(
+                "relative aspect-[16/8] overflow-hidden bg-navy",
+                wide && "lg:aspect-auto lg:w-1/3 lg:shrink-0",
+              )}
+            >
               {image && (
                 <img
                   src={image}
@@ -422,8 +431,13 @@ export function ServicesGrid({ headingLevel = "h3" }: { headingLevel?: "h2" | "h
                 style={{ background: gradient }}
               />
             </div>
-            <div className="relative flex flex-1 flex-col px-8 pb-8">
-              <div className="relative -mt-7 size-14">
+            <div
+              className={cn(
+                "relative flex flex-1 flex-col px-8 pb-8",
+                wide && "lg:justify-center lg:pt-8",
+              )}
+            >
+              <div className={cn("relative -mt-7 size-14", wide && "lg:mt-0")}>
                 <span
                   aria-hidden
                   className="animate-halo absolute inset-0 rounded-2xl"
