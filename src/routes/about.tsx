@@ -41,7 +41,7 @@ function About() {
       </PageHero>
 
       <section className="section-y">
-        <div className="container-td grid gap-14 lg:grid-cols-2 lg:items-center">
+        <div className="container-td grid gap-14 lg:grid-cols-2 lg:items-start">
           <div>
             <SectionHeading eyebrow={aboutContent.eyebrow} title={aboutContent.strapline} />
             <div className="mt-6 space-y-4 text-lg leading-relaxed text-muted-foreground">
@@ -61,7 +61,9 @@ function About() {
               </Button>
             </div>
           </div>
-          <AboutGallery />
+          <div className="lg:sticky lg:top-28">
+            <AboutGallery />
+          </div>
         </div>
       </section>
 
