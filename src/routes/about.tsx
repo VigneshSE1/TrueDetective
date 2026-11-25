@@ -55,7 +55,7 @@ function About() {
               <p className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
                 Our objective is simple
               </p>
-              <p className="mt-2 font-display text-xl leading-snug">
+              <p className="mt-2 text-xl leading-snug">
                 Find the facts. Verify the information. Help our clients make informed decisions.
               </p>
             </blockquote>
