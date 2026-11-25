@@ -16,6 +16,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { aboutGallery, services } from "@/lib/site";
+import { LogoWatermark } from "@/components/site/Logo";
 import { cn } from "@/lib/utils";
 import matrimonialImage from "@/assets/about/slide-1.svg";
 import surveillanceImage from "@/assets/about/slide-2.svg";
@@ -179,7 +180,8 @@ export function PageHero({
   animateTitle?: boolean;
 }) {
   return (
-    <section className="bg-navy text-navy-foreground">
+    <section className="relative isolate overflow-hidden bg-navy text-navy-foreground">
+      <LogoWatermark className="absolute top-1/2 right-[-4rem] -z-10 hidden size-[30rem] -translate-y-1/2 lg:block" />
       <div className="container-td py-20 lg:py-28">
         <div className="max-w-3xl animate-rise">
           <p className="eyebrow">{eyebrow}</p>
@@ -219,7 +221,8 @@ export function CtaRow({
 
 export function ConfidentialityBanner() {
   return (
-    <section className="bg-charcoal text-navy-foreground">
+    <section className="relative isolate overflow-hidden bg-charcoal text-navy-foreground">
+      <LogoWatermark className="absolute top-1/2 left-[-6rem] -z-10 hidden size-[26rem] -translate-y-1/2 opacity-20 lg:block" />
       <div className="container-td section-y">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-center">
           <div>

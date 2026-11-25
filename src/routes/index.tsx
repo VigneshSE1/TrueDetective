@@ -35,6 +35,7 @@ import { ClientsSection } from "@/components/site/Clients";
 import { WhyUsSection } from "@/components/site/WhyUs";
 import { CorporateSection, PersonalSection } from "@/components/site/InvestigationSections";
 import { aboutContent, approachSteps, faqs, whatsappLink } from "@/lib/site";
+import { LogoWatermark } from "@/components/site/Logo";
 import heroImage from "@/assets/hero-banner.svg";
 
 const title = "Private Investigation & Corporate Intelligence | TRUE DETECTIVE";
@@ -231,6 +232,7 @@ function Home() {
           className="absolute inset-0 -z-10 h-full w-full object-cover object-right"
         />
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy via-navy/80 to-transparent" />
+        <LogoWatermark className="absolute top-1/2 right-[4%] -z-10 hidden size-[34rem] -translate-y-1/2 lg:block" />
         <div className="container-td py-28 lg:py-40">
           <div className="max-w-3xl">
             <p className="eyebrow animate-rise">Private Investigation &amp; Corporate Intelligence</p>

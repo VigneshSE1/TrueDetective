@@ -18,11 +18,11 @@ export function Footer() {
       <div className="container-td grid gap-12 py-16 md:grid-cols-3">
         <div>
           <div className="flex items-center gap-3">
-            <Logo onDark className="h-12 w-auto" />
+            <Logo onDark className="size-12" />
             <p className="font-display text-xl font-bold tracking-[0.2em]">{site.name}</p>
           </div>
           <p className="mt-2 text-sm text-navy-foreground/60">{site.descriptor}</p>
-          <p className="mt-6 max-w-xs font-display text-lg text-navy-foreground/90">
+          <p className="mt-6 max-w-xs text-lg text-navy-foreground/90">
             {site.tagline}
           </p>
         </div>

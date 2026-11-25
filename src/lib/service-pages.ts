@@ -1,7 +1,7 @@
 // Detail-page content for each service. `slug` matches the entry in `services`
 // (src/lib/site.ts) and is used in the URL: /services/<slug>.
 
-// Text in **double asterisks** is rendered as a highlighted key phrase.
+// Text in double asterisks is rendered as a highlighted key phrase.
 export type ServicePage = {
   slug: string;
   headline: string;
@@ -17,8 +17,8 @@ export const servicePages: ServicePage[] = [
     slug: "pre-matrimonial-verification",
     headline: "Know the Person Before You Commit to the Family",
     intro: [
-      "Marriage is **one of the biggest decisions a family makes**, and the information shared during alliance talks is often incomplete. Our pre-matrimonial verification **confirms what has been told to you**, quietly and respectfully.",
-      "We verify claims about a prospective bride or groom and their family, so that **the decision is made on facts** and not only on introductions.",
+      "Marriage is one of the biggest decisions a family makes, and the information shared during alliance talks is often incomplete. Our pre-matrimonial verification confirms what has been told to you, quietly and respectfully.",
+      "We verify claims about a prospective bride or groom and their family, so that the decision is made on facts and not only on introductions.",
     ],
     covers: [
       { title: "Identity & age", text: "Confirming name, age, marital status and that the person is who they say they are." },
@@ -44,8 +44,8 @@ export const servicePages: ServicePage[] = [
     slug: "post-marriage-investigation",
     headline: "Clarity When Something in Your Marriage Does Not Add Up",
     intro: [
-      "When **a spouse's behaviour changes**, or **facts that were promised before marriage turn out to be untrue**, the stress can be overwhelming. We help you **establish what is actually happening**, with **complete discretion**.",
-      "Our work is limited to **lawful enquiry and observation**, and **findings are shared only with you**.",
+      "When a spouse's behaviour changes, or facts that were promised before marriage turn out to be untrue, the stress can be overwhelming. We help you establish what is actually happening, with complete discretion.",
+      "Our work is limited to lawful enquiry and observation, and findings are shared only with you.",
     ],
     covers: [
       { title: "Suspected infidelity", text: "Lawful observation and fact-finding where there is concern about a spouse's conduct." },
@@ -71,8 +71,8 @@ export const servicePages: ServicePage[] = [
     slug: "employment-verification",
     headline: "Hire With Confidence, Not Assumption",
     intro: [
-      "A résumé tells you what a candidate wants you to know. **Employment verification confirms it.** We help companies of every size **check the people they are about to trust** with money, data and customers.",
-      "Verification can be done **before hiring**, and also later where there are concerns about an existing employee.",
+      "A résumé tells you what a candidate wants you to know. Employment verification confirms it. We help companies of every size check the people they are about to trust with money, data and customers.",
+      "Verification can be done before hiring, and also later where there are concerns about an existing employee.",
     ],
     covers: [
       { title: "Identity & address", text: "Confirming identity documents and the current and permanent address." },
@@ -98,8 +98,8 @@ export const servicePages: ServicePage[] = [
     slug: "missing-person-tracing",
     headline: "A Careful, Lawful Search for Someone Who Has Lost Contact",
     intro: [
-      "When someone goes missing or cuts off contact, **every day matters**. We plan a **structured search** that works **alongside the police and your family**, never in place of them.",
-      "Our focus is on **tracing the person's whereabouts** through lawful enquiry and informing you of what we find.",
+      "When someone goes missing or cuts off contact, every day matters. We plan a structured search that works alongside the police and your family, never in place of them.",
+      "Our focus is on tracing the person's whereabouts through lawful enquiry and informing you of what we find.",
     ],
     covers: [
       { title: "Case assessment", text: "Reviewing the circumstances, last known contact and any warning signs." },
@@ -126,8 +126,8 @@ export const servicePages: ServicePage[] = [
     slug: "surveillance",
     headline: "Evidence You Can Rely On, Gathered Discreetly",
     intro: [
-      "Some questions can only be answered by **observing what actually happens**. Our surveillance assignments are **planned in advance**, carried out by trained personnel, and **documented in a way that is clear and factual**.",
-      "We **work within applicable laws** and avoid anything that would put the client or the case at risk.",
+      "Some questions can only be answered by observing what actually happens. Our surveillance assignments are planned in advance, carried out by trained personnel, and documented in a way that is clear and factual.",
+      "We work within applicable laws and avoid anything that would put the client or the case at risk.",
     ],
     covers: [
       { title: "Movement surveillance", text: "Discreet following on foot or by vehicle to establish routines and destinations." },
@@ -153,8 +153,8 @@ export const servicePages: ServicePage[] = [
     slug: "insurance-claim-investigation",
     headline: "Independent Facts Behind the Claim",
     intro: [
-      "Insurance claims can involve large sums and conflicting accounts. We provide an **independent, factual investigation** that helps **genuine claims move forward** and **doubtful ones be examined properly**.",
-      "Our reports are balanced, so that **decisions are made on evidence** and not on assumption.",
+      "Insurance claims can involve large sums and conflicting accounts. We provide an independent, factual investigation that helps genuine claims move forward and doubtful ones be examined properly.",
+      "Our reports are balanced, so that decisions are made on evidence and not on assumption.",
     ],
     covers: [
       { title: "Accident circumstances", text: "Reconstructing how, where and when a vehicle or other accident took place." },
@@ -179,8 +179,8 @@ export const servicePages: ServicePage[] = [
     slug: "undercover-operations",
     headline: "Discreet Observation Where Open Enquiry Is Not Possible",
     intro: [
-      "Some workplace or business problems, such as leakage, theft or misconduct, **cannot be understood by asking questions openly**. Undercover operations allow us to **observe what is really happening, without alerting those involved**.",
-      "Every assignment is **carefully planned with the client**, with **clear limits** on what will and will not be done.",
+      "Some workplace or business problems, such as leakage, theft or misconduct, cannot be understood by asking questions openly. Undercover operations allow us to observe what is really happening, without alerting those involved.",
+      "Every assignment is carefully planned with the client, with clear limits on what will and will not be done.",
     ],
     covers: [
       { title: "Workplace observation", text: "Placing a trained person inside a workplace, with the client's authorisation, to observe operations." },
@@ -206,8 +206,8 @@ export const servicePages: ServicePage[] = [
     slug: "fingerprint-handwriting-analysis",
     headline: "Evidence on Whether a Document Is What It Claims to Be",
     intro: [
-      "Disputed signatures, altered documents and anonymous notes are common in family, property and business disagreements. We **compare handwriting and fingerprints with known samples** to help you understand **whether a document is authentic**.",
-      "Where an opinion is required for court, we coordinate with **qualified forensic examiners**.",
+      "Disputed signatures, altered documents and anonymous notes are common in family, property and business disagreements. We compare handwriting and fingerprints with known samples to help you understand whether a document is authentic.",
+      "Where an opinion is required for court, we coordinate with qualified forensic examiners.",
     ],
     covers: [
       { title: "Signature comparison", text: "Comparing a disputed signature against genuine specimens." },
@@ -232,8 +232,8 @@ export const servicePages: ServicePage[] = [
     slug: "corporate-intelligence",
     headline: "See the Risks and Relationships Behind Your Business",
     intro: [
-      "Business decisions are only as good as the information behind them. Corporate intelligence gives leadership **a clear picture of the people, partners and risks** around the business, **before they become losses**.",
-      "We gather, verify and analyse information so that you can **act with confidence**.",
+      "Business decisions are only as good as the information behind them. Corporate intelligence gives leadership a clear picture of the people, partners and risks around the business, before they become losses.",
+      "We gather, verify and analyse information so that you can act with confidence.",
     ],
     covers: [
       { title: "Partner & vendor checks", text: "Understanding the background, reputation and track record of those you do business with." },
@@ -259,8 +259,8 @@ export const servicePages: ServicePage[] = [
     slug: "litigation-support-fact-finding",
     headline: "Facts That Help Your Case Stand on Firm Ground",
     intro: [
-      "Strong legal arguments depend on **facts that can be shown and supported**. We assist lawyers and their clients by **gathering and organising factual information** relevant to a dispute.",
-      "We work **under the direction of the legal team** and keep our **findings confidential**.",
+      "Strong legal arguments depend on facts that can be shown and supported. We assist lawyers and their clients by gathering and organising factual information relevant to a dispute.",
+      "We work under the direction of the legal team and keep our findings confidential.",
     ],
     covers: [
       { title: "Locating people", text: "Tracing witnesses, defendants and parties whose address is unknown." },

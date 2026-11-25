@@ -49,22 +49,6 @@ export const Route = createFileRoute("/services_/$slug")({
   component: ServiceDetail,
 });
 
-// Renders **phrases** as highlighted, bold key text.
-function Highlighted({ text }: { text: string }) {
-  return text.split("**").map((part, i) =>
-    i % 2 === 1 ? (
-      <mark
-        key={i}
-        className="rounded-sm bg-accent/20 px-1 font-semibold text-foreground [box-decoration-break:clone]"
-      >
-        {part}
-      </mark>
-    ) : (
-      <span key={i}>{part}</span>
-    ),
-  );
-}
-
 function ServiceDetail() {
   const { page, service } = Route.useLoaderData();
   const { icon: Icon, from, to } = serviceStyles[service.icon] ?? {
@@ -98,10 +82,8 @@ function ServiceDetail() {
               <Icon className="size-10" strokeWidth={1.6} />
             </span>
             <div className="rule-accent mt-8 space-y-5 text-lg leading-relaxed text-muted-foreground">
-              {page.intro.map((p, i) => (
-                <p key={p} className={i === 0 ? "text-xl text-foreground sm:text-[1.35rem]" : ""}>
-                  <Highlighted text={p} />
-                </p>
+              {page.intro.map((p) => (
+                <p key={p}>{p}</p>
               ))}
             </div>
           </div>
