@@ -10,9 +10,9 @@ import {
 } from "@/components/site/Blocks";
 import { aboutContent, approachSteps } from "@/lib/site";
 
-const title = "About TRUE DETECTIVE | Investigation Agency Tamil Nadu & Bangalore";
+const title = "About TRUE DETECTIVE | Investigation Agency Tamil Nadu";
 const description =
-  "Learn how TRUE DETECTIVE approaches private investigation and corporate intelligence - discreet enquiries, verification and fact-based reporting across Tamil Nadu and Bangalore.";
+  "Learn how TRUE DETECTIVE approaches private investigation and corporate intelligence - discreet enquiries, verification and fact-based reporting across Tamil Nadu.";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -32,6 +32,7 @@ function About() {
   return (
     <>
       <PageHero
+        tossLogo
         eyebrow="About"
         title="Investigation Built Around Facts"
         description="Professional private investigation and corporate intelligence services for clients who need clarity in situations where facts are uncertain."
@@ -42,20 +43,15 @@ function About() {
       <section className="section-y">
         <div className="container-td grid gap-14 lg:grid-cols-2 lg:items-center">
           <div>
-            <p className="eyebrow">{aboutContent.eyebrow}</p>
-            <h2 className="mt-4 text-3xl leading-[1.12] sm:text-4xl lg:text-[2.4rem]">
-              {aboutContent.strapline}
-            </h2>
-            <div className="mt-6 space-y-4 text-muted-foreground">
+            <SectionHeading eyebrow={aboutContent.eyebrow} title={aboutContent.strapline} />
+            <div className="mt-6 space-y-4 text-lg leading-relaxed text-muted-foreground">
               {aboutContent.paragraphs.map((p) => (
                 <p key={p}>{p}</p>
               ))}
             </div>
             <blockquote className="rule-accent mt-8 text-foreground">
-              <p className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
-                Our objective is simple
-              </p>
-              <p className="mt-2 text-xl leading-snug">
+              <p className="eyebrow">Our objective is simple</p>
+              <p className="mt-2 text-lg leading-relaxed">
                 Find the facts. Verify the information. Help our clients make informed decisions.
               </p>
             </blockquote>

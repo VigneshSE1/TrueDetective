@@ -25,13 +25,13 @@ import briberyImage from "@/assets/about/slide-18.svg";
 import brandImage from "@/assets/about/slide-14.svg";
 import dueDiligenceImage from "@/assets/about/slide-15.svg";
 
-import documentsPhoto from "@/assets/documents.jpg";
-import surveillancePhoto from "@/assets/surveillance.jpg";
 import matrimonialImage from "@/assets/about/slide-1.svg";
 import postMarriageImage from "@/assets/about/slide-9.svg";
 import missingPersonImage from "@/assets/about/slide-4.svg";
 import surveillanceImage from "@/assets/about/slide-2.svg";
 import identityImage from "@/assets/about/slide-19.svg";
+import familyImage from "@/assets/about/slide-20.svg";
+import caseFileImage from "@/assets/about/slide-21.svg";
 
 type Point = { icon: LucideIcon; title: string; text: string };
 
@@ -154,16 +154,11 @@ const whyUs: { icon: LucideIcon; title: string; text: string }[] = [
   {
     icon: MapPin,
     title: "Local presence",
-    text: "Based in Chennai, serving Tamil Nadu and Bangalore.",
+    text: "Based in Chennai, serving Tamil Nadu.",
   },
 ];
 
 const personalSlides: Slide[] = [
-  {
-    src: documentsPhoto,
-    alt: "Investigator reviewing confidential case documents",
-    caption: "Discreet case documentation",
-  },
   {
     src: matrimonialImage,
     alt: "Illustration of wedding rings with background verification checks",
@@ -175,14 +170,14 @@ const personalSlides: Slide[] = [
     caption: "Post-marriage and relationship enquiries",
   },
   {
+    src: familyImage,
+    alt: "Illustration of a family home with a magnifying glass over a person and a verified check",
+    caption: "Family & background verification",
+  },
+  {
     src: missingPersonImage,
     alt: "Illustration of a map with a tracked route and location pin",
     caption: "Missing person tracing",
-  },
-  {
-    src: surveillancePhoto,
-    alt: "Field observation during a surveillance assignment",
-    caption: "Surveillance & discreet observation",
   },
   {
     src: surveillanceImage,
@@ -193,6 +188,11 @@ const personalSlides: Slide[] = [
     src: identityImage,
     alt: "Illustration of an ID card and a house with verified checks",
     caption: "Identity & address verification",
+  },
+  {
+    src: caseFileImage,
+    alt: "Illustration of a confidential case file with a padlock and verified check",
+    caption: "Confidential case documentation",
   },
 ];
 
@@ -259,7 +259,7 @@ const personalWhy: Point[] = [
   {
     icon: MapPin,
     title: "Local presence",
-    text: "Based in Chennai, serving Tamil Nadu and Bangalore.",
+    text: "Based in Chennai, serving Tamil Nadu.",
   },
 ];
 

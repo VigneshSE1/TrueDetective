@@ -18,7 +18,7 @@ import { cn } from "@/lib/utils";
 
 const stats = [
   { value: 10, suffix: "+", label: "Years of hands-on experience" },
-  { value: 2, suffix: "", label: "Regions served: Tamil Nadu & Bangalore" },
+  { value: 1, suffix: "", label: "Region served: Tamil Nadu" },
   { value: services.length, suffix: "", label: "Investigation services under one roof" },
 ];
 
@@ -51,7 +51,7 @@ const reasons: { icon: LucideIcon; title: string; text: string }[] = [
   {
     icon: MapPin,
     title: "Regional understanding",
-    text: "Local knowledge across Tamil Nadu and Bangalore.",
+    text: "Local knowledge across Tamil Nadu.",
   },
 ];
 

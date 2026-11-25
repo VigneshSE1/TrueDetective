@@ -2,11 +2,11 @@ export const site = {
   name: "TRUE DETECTIVE",
   descriptor: "Private Investigation & Corporate Intelligence",
   tagline: "When Facts Matter, We Investigate.",
-  whatsappNumber: "919842251585",
-  phoneDisplay: "+91 98422 51585",
+  whatsappNumber: "916369052140",
+  phoneDisplay: "+91 63690 52140",
   emailDisplay: "enquiry@truedetective.co.in",
-  addressDisplay: "Chennai 600088, Tamil Nadu, India",
-  regions: ["Tamil Nadu", "Bangalore"],
+  addressDisplay: "Chennai 600099, Tamil Nadu, India",
+  regions: ["Tamil Nadu"],
 };
 
 export const whatsappLink = `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(
@@ -134,7 +134,7 @@ export const faqs = [
   },
   {
     q: "What locations do you cover?",
-    a: "We primarily serve clients across Tamil Nadu and Bangalore. Assignments in other locations may be considered depending on the requirement.",
+    a: "We primarily serve clients across Tamil Nadu. Assignments in other locations may be considered depending on the requirement.",
   },
   {
     q: "Do you provide corporate investigations?",

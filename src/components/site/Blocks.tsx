@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import {
+  ArrowLeft,
   ArrowRight,
   HeartHandshake,
   HeartCrack,
@@ -16,17 +17,17 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { aboutGallery, services } from "@/lib/site";
-import { LogoWatermark } from "@/components/site/Logo";
+import { Logo, LogoWatermark } from "@/components/site/Logo";
 import { cn } from "@/lib/utils";
 import matrimonialImage from "@/assets/about/slide-1.svg";
 import surveillanceImage from "@/assets/about/slide-2.svg";
+import postMarriageImage from "@/assets/about/slide-9.svg";
 import employmentImage from "@/assets/about/slide-3.svg";
 import missingPersonImage from "@/assets/about/slide-4.svg";
 import corporateIntelligenceImage from "@/assets/about/slide-5.svg";
 import documentsImage from "@/assets/about/slide-6.svg";
 import corporateInvestigationImage from "@/assets/about/slide-7.svg";
 import caseBoardImage from "@/assets/about/slide-8.svg";
-import postMarriageImage from "@/assets/about/slide-9.svg";
 import insuranceImage from "@/assets/about/slide-10.svg";
 import undercoverImage from "@/assets/about/slide-11.svg";
 import litigationImage from "@/assets/about/slide-12.svg";
@@ -172,16 +173,18 @@ export function PageHero({
   description,
   children,
   animateTitle = false,
+  tossLogo = false,
 }: {
   eyebrow: string;
   title: string;
   description: string;
   children?: ReactNode;
   animateTitle?: boolean;
+  tossLogo?: boolean;
 }) {
   return (
     <section className="relative isolate overflow-hidden bg-navy text-navy-foreground">
-      <LogoWatermark className="absolute top-1/2 right-[-4rem] -z-10 hidden size-[30rem] -translate-y-1/2 lg:block" />
+      <LogoWatermark toss={tossLogo} className="absolute top-1/2 right-[-4rem] -z-10 hidden size-[30rem] -translate-y-1/2 lg:block" />
       <div className="container-td py-20 lg:py-28">
         <div className="max-w-3xl animate-rise">
           <p className="eyebrow">{eyebrow}</p>
@@ -220,12 +223,20 @@ export function CtaRow({
 }
 
 export function ConfidentialityBanner() {
+  // The emblem's draw-on intro plays when the banner scrolls into view.
+  const [ref, shown] = useInView<HTMLElement>(0.3);
   return (
-    <section className="relative isolate overflow-hidden bg-charcoal text-navy-foreground">
-      <LogoWatermark className="absolute top-1/2 left-[-6rem] -z-10 hidden size-[26rem] -translate-y-1/2 opacity-20 lg:block" />
+    <section
+      ref={ref}
+      className="relative isolate overflow-hidden bg-charcoal text-navy-foreground"
+    >
+      <div className="absolute top-1/2 left-[2rem] -z-10 hidden -translate-y-1/2 opacity-60 lg:block">
+        {shown && <LogoWatermark toss className="size-[32rem]" />}
+      </div>
       <div className="container-td section-y">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-center">
           <div>
+            <div className="mb-6 size-16">{shown && <Logo className="size-16 shadow-md" />}</div>
             <p className="eyebrow">Confidentiality</p>
             <h2 className="mt-4 text-3xl leading-tight text-navy-foreground sm:text-4xl">
               Your Matter. Your Privacy. Our Discretion.
@@ -268,12 +279,14 @@ export function Slideshow({
 }) {
   const [active, setActive] = useState(0);
 
+  const count = slides.length;
+  const go = (n: number) => setActive(((n % count) + count) % count);
+
+  // Restarts whenever the slide changes, so a manual click gets a full interval.
   useEffect(() => {
-    const id = setInterval(() => {
-      setActive((i) => (i + 1) % slides.length);
-    }, interval);
-    return () => clearInterval(id);
-  }, [slides.length, interval]);
+    const id = setTimeout(() => setActive((i) => (i + 1) % count), interval);
+    return () => clearTimeout(id);
+  }, [active, count, interval]);
 
   return (
     <div className={cn("overflow-hidden rounded-lg shadow-elegant", className)}>
@@ -285,10 +298,24 @@ export function Slideshow({
             alt={slide.alt}
             loading={i === 0 ? "eager" : "lazy"}
             className={cn(
-              "absolute inset-0 h-full w-full object-cover transition-opacity duration-1000",
+              "absolute inset-0 h-full w-full object-cover transition-opacity duration-200",
               i === active ? "animate-kenburns opacity-100" : "opacity-0",
             )}
           />
+        ))}
+        {(["prev", "next"] as const).map((dir) => (
+          <button
+            key={dir}
+            type="button"
+            aria-label={dir === "prev" ? "Previous slide" : "Next slide"}
+            onClick={() => go(active + (dir === "prev" ? -1 : 1))}
+            className={cn(
+              "absolute top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-full bg-navy/70 text-navy-foreground ring-1 ring-accent/50 backdrop-blur transition hover:scale-110 hover:bg-accent hover:text-accent-foreground focus-visible:outline-2 focus-visible:outline-accent",
+              dir === "prev" ? "left-3" : "right-3",
+            )}
+          >
+            {dir === "prev" ? <ArrowLeft className="size-5" /> : <ArrowRight className="size-5" />}
+          </button>
         ))}
         <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/85 to-transparent p-5 pt-10">
           <p key={active} className="animate-rise text-sm font-medium text-navy-foreground">
@@ -328,9 +355,9 @@ export function LocationSection() {
     <section className="border-t border-border bg-surface">
       <div className="container-td section-y text-center">
         <p className="eyebrow">Serving Clients Across</p>
-        <h2 className="mt-4 text-3xl sm:text-4xl">Tamil Nadu &amp; Bangalore</h2>
+        <h2 className="mt-4 text-3xl sm:text-4xl">Tamil Nadu</h2>
         <p className="mx-auto mt-5 max-w-2xl text-muted-foreground">
-          Our primary service areas include Tamil Nadu and Bangalore, with assignments in other
+          Our primary service area is Tamil Nadu, with assignments in other
           locations considered based on client requirements.
         </p>
       </div>
