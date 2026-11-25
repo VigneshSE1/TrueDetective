@@ -19,7 +19,7 @@ export function Logo({
       width={512}
       height={512}
       className={cn(
-        "animate-logo aspect-square shrink-0 rounded-full object-cover transition-transform duration-500 hover:scale-110 hover:rotate-6",
+        "animate-logo aspect-square shrink-0 rounded-2xl object-cover transition-transform duration-500 hover:scale-110 hover:rotate-6",
         className,
       )}
     />
@@ -33,7 +33,7 @@ export function Logo({
  * then the detective emblem lights up (spotlight reveal) while the drawn lines
  * dissolve into it.
  */
-const MASK = "[mask-image:radial-gradient(circle,#000_55%,transparent_72%)]";
+const MASK = "[mask-image:radial-gradient(circle,#000_68%,transparent_92%)]";
 
 // Reticle geometry in the logo's own 940x940 crop (centre 470,470).
 const drawRings = [
