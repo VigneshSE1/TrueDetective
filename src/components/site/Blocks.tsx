@@ -17,7 +17,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { aboutGallery, services } from "@/lib/site";
-import { Logo, LogoWatermark } from "@/components/site/Logo";
+import { LogoWatermark } from "@/components/site/Logo";
 import { cn } from "@/lib/utils";
 import matrimonialImage from "@/assets/about/slide-1.svg";
 import surveillanceImage from "@/assets/about/slide-2.svg";
@@ -236,7 +236,6 @@ export function ConfidentialityBanner() {
       <div className="container-td section-y">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-center">
           <div>
-            <div className="mb-6 size-16">{shown && <Logo className="size-16 shadow-md" />}</div>
             <p className="eyebrow">Confidentiality</p>
             <h2 className="mt-4 text-3xl leading-tight text-navy-foreground sm:text-4xl">
               Your Matter. Your Privacy. Our Discretion.

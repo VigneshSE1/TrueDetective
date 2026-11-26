@@ -35,7 +35,7 @@ import { ClientsSection } from "@/components/site/Clients";
 import { WhyUsSection } from "@/components/site/WhyUs";
 import { CorporateSection, PersonalSection } from "@/components/site/InvestigationSections";
 import { aboutContent, approachSteps, faqs, whatsappLink } from "@/lib/site";
-import { LogoWatermark, Wordmark } from "@/components/site/Logo";
+import { LogoTagline, LogoWatermark, Wordmark } from "@/components/site/Logo";
 
 const title = "Private Investigation & Corporate Intelligence | TRUE DETECTIVE";
 const description =
@@ -230,21 +230,24 @@ function Home() {
     <>
       {/* Hero */}
       <section className="relative isolate overflow-hidden bg-navy text-navy-foreground">
-        <LogoWatermark toss className="absolute top-1/2 right-[4%] -z-10 hidden size-[34rem] -translate-y-1/2 lg:block" />
+        <div className="absolute top-1/2 right-[4%] -z-10 hidden -translate-y-1/2 flex-col items-center lg:flex">
+          <LogoWatermark toss className="size-[30rem]" />
+          <LogoTagline className="-mt-4" delay={1.4} />
+        </div>
         <div className="container-td py-28 lg:py-40">
           <div className="max-w-3xl">
             <Wordmark
               className="animate-rise block text-3xl sm:text-4xl lg:text-5xl"
-              style={{ animationDelay: "3s" }}
+              style={{ animationDelay: "0.1s" }}
               onDark
             />
-            <p className="eyebrow animate-rise mt-5">Private Investigation &amp; Corporate Intelligence</p>
+            <p className="eyebrow animate-rise mt-5" style={{ animationDelay: "0.5s" }}>Private Investigation &amp; Corporate Intelligence</p>
             <h1 className="mt-6 text-4xl leading-[1.06] sm:text-5xl lg:text-[3.9rem]">
               {["When", "Facts", "Matter,", "We", "Investigate."].map((word, i) => (
                 <span
                   key={word}
                   className={`animate-word mr-[0.28em] ${word === "Investigate." ? "text-accent" : ""}`}
-                  style={{ animationDelay: `${0.25 + i * 0.16}s` }}
+                  style={{ animationDelay: `${0.8 + i * 0.16}s` }}
                 >
                   {word}
                 </span>
@@ -252,13 +255,13 @@ function Home() {
             </h1>
             <p
               className="animate-rise mt-7 max-w-2xl text-lg leading-relaxed text-navy-foreground/70"
-              style={{ animationDelay: "1.25s" }}
+              style={{ animationDelay: "1.7s" }}
             >
               Confidential and professional investigative services, including surveillance,
               verification, and fact-finding, for individuals, businesses, and legal professionals
               across Tamil Nadu.
             </p>
-            <div className="animate-rise mt-10 flex flex-wrap gap-3" style={{ animationDelay: "1.5s" }}>
+            <div className="animate-rise mt-10 flex flex-wrap gap-3" style={{ animationDelay: "1.95s" }}>
               <Button asChild variant="accent" size="xl">
                 <Link to="/contact">Request a Confidential Consultation</Link>
               </Button>
@@ -267,51 +270,6 @@ function Home() {
                   Explore Our Services <ArrowRight />
                 </Link>
               </Button>
-            </div>
-            <div className="mt-14 max-w-3xl">
-              <div aria-hidden className="h-px bg-navy-foreground/15">
-                <div
-                  className="animate-draw h-full bg-accent"
-                  style={{ animationDuration: "2.4s", animationDelay: "1.7s" }}
-                />
-              </div>
-              <ol className="mt-8 grid gap-6 sm:grid-cols-3">
-                {objectiveSteps.map((step, i) => {
-                  const delay = 1.9 + i * 0.6;
-                  return (
-                    <li
-                      key={step.word}
-                      className="animate-rise group flex items-start gap-4"
-                      style={{ animationDelay: `${delay}s` }}
-                    >
-                      <span className="relative flex size-12 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent ring-1 ring-accent/50 transition-transform duration-300 group-hover:scale-110">
-                        <span
-                          aria-hidden
-                          className="animate-ping-once absolute inset-0 rounded-full ring-2 ring-accent"
-                          style={{ animationDelay: `${delay + 0.3}s` }}
-                        />
-                        <span
-                          aria-hidden
-                          className="animate-halo absolute inset-0 rounded-full bg-accent/30"
-                          style={{ animationDelay: `${delay + 1.4}s` }}
-                        />
-                        <step.icon className="relative size-5" strokeWidth={1.6} />
-                      </span>
-                      <div>
-                        <p className="font-display text-xs tracking-[0.2em] text-accent">
-                          {String(i + 1).padStart(2, "0")}
-                        </p>
-                        <p className="mt-0.5 font-display text-xl text-navy-foreground">
-                          {step.word}
-                        </p>
-                        <p className="mt-1 text-sm leading-snug text-navy-foreground/70">
-                          {step.text}
-                        </p>
-                      </div>
-                    </li>
-                  );
-                })}
-              </ol>
             </div>
           </div>
         </div>

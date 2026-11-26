@@ -43,7 +43,7 @@ export function Header() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-5 xl:flex">
+        <nav className="font-display hidden items-center gap-5 xl:flex">
           {navLinks.map((l) =>
             l.to === "/services" ? (
               <div key={l.to} className="group relative">
@@ -105,7 +105,7 @@ export function Header() {
           )}
         </nav>
 
-        <div className="hidden xl:block">
+        <div className="font-display hidden xl:block">
           <Button asChild variant="accent">
             <Link to="/contact">Confidential Consultation</Link>
           </Button>
@@ -124,7 +124,7 @@ export function Header() {
 
       {open && (
         <div className="border-t border-border bg-background xl:hidden">
-          <nav className="container-td flex flex-col py-4">
+          <nav className="font-display container-td flex flex-col py-4">
             {navLinks.map((l) =>
               l.to === "/services" ? (
                 <div key={l.to} className="border-b border-border/60">
