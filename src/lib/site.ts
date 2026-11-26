@@ -5,7 +5,7 @@ export const site = {
   whatsappNumber: "916369052140",
   phoneDisplay: "+91 63690 52140",
   emailDisplay: "enquiry@truedetective.co.in",
-  addressDisplay: "Chennai 600099, Tamil Nadu, India",
+  addressDisplay: "No 4, Haridoss Main Road, Kolathur, Chennai 600099, Tamil Nadu, India",
   regions: ["Tamil Nadu"],
 };
 
